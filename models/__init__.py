@@ -2,4 +2,8 @@
 This is where the storage engine is initiated
 """
 
-storage = ""
+from models.engine.db_storage import DBStorage
+
+
+storage = DBStorage()
+storage.reload()

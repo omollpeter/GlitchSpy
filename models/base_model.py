@@ -36,10 +36,10 @@ class BaseModel:
             self.id,
             self.__dict__
         )
-    
+
     def to_dict(self):
         """
-        Returns a dictionary containing 
+        Returns a dictionary containing
         """
         new_dict = self.__dict__.copy()
 
