@@ -1,0 +1,9 @@
+#!/bin/bash
+# This is a shell script to automate version control
+# Author: Peter Omollo
+# Date: 17-06-2024
+
+git add -A
+read -p "Enter commit message: " commit
+git commit -m "$commit"
+git push
