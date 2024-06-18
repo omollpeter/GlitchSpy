@@ -44,7 +44,7 @@ class DBStorage:
             GLITCHSPY_MYSQL_USER,
             GLITCHSPY_MYSQL_PWD,
             GLITCHSPY_MYSQL_HOST,
-            GLITCHSPY_MYSQL_HOST
+            GLITCHSPY_MYSQL_DB
         ), pool_pre_ping=True)
 
     def reload(self):

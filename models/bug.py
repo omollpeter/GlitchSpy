@@ -27,3 +27,9 @@ class Bug(BaseModel, Base):
         backref="bug",
         cascade="all, delete, delete-orphan"
     )
+
+    def __init__(self, *args, **kwargs):
+        """
+        Initializes Bug instance
+        """
+        super().__init__(*args, **kwargs)

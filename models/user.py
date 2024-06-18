@@ -13,9 +13,19 @@ class User(BaseModel, Base):
     """
     Defines a user class
     """
+    __tablename__ = "users"
+
     first_name = Column(String(30), nullable=False)
     last_name = Column(String(30), nullable=False)
     email = Column(String(100), nullable=False)
     password = Column(String(300), nullable=False)
     contact = Column(String(60), nullable=False)
-    comments = relationship("User", backref="user")
+    comments = relationship(
+        "Comment", backref="user", cascade="all, delete, delete-orphan"
+    )
+
+    def __init__(self, *args, **kwargs):
+        """
+        Initializes the instance attributes a User instance
+        """
+        super().__init__(*args, **kwargs)
