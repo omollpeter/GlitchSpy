@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 import uuid
 from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+from hashlib import md5
 
 
 # Define a time format string
@@ -31,6 +32,10 @@ class BaseModel:
         Initializes the instance attributes a BaseModel instance
         """
         if kwargs:
+            if kwargs.get("password"):
+                kwargs["password"] = md5(
+                    kwargs["password"].encode()
+                ).hexdigest()
             for key, value in kwargs.items():
                 setattr(self, key, value)
             if kwargs.get("created_at") and type(self.created_at) is str:
@@ -77,6 +82,8 @@ class BaseModel:
             new_dict["updated_at"] = new_dict["updated_at"].strftime(time_frmt)
         if "_sa_instance_state" in new_dict:
             del new_dict["_sa_instance_state"]
+        if "password" in new_dict:
+            del new_dict["password"]
 
         return new_dict
 

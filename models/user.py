@@ -20,9 +20,6 @@ class User(BaseModel, Base):
     email = Column(String(100), nullable=False)
     password = Column(String(300), nullable=False)
     contact = Column(String(60), nullable=False)
-    comments = relationship(
-        "Comment", backref="user", cascade="all, delete, delete-orphan"
-    )
 
     def __init__(self, *args, **kwargs):
         """

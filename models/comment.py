@@ -17,7 +17,6 @@ class Comment(BaseModel, Base):
 
     comment_string = Column(String(1028), nullable=False)
     bug_id = Column(String(60), ForeignKey("bugs.id"), nullable=False)
-    user_id = Column(String(60), ForeignKey("users.id"), nullable=False)
 
     def __init__(self, *args, **kwargs):
         """
