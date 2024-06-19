@@ -22,6 +22,7 @@ class Bug(BaseModel, Base):
     product = Column(String(60), nullable=False)
     attachment = Column(String(1028), nullable=True)
     reportedBy = Column(String(60), default="anonymous")
+    status = Column(String(20), default="public", nullable=False)
     comments = relationship(
         "Comment",
         backref="bug",
