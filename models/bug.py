@@ -5,6 +5,7 @@ This module contains class definition for Bug Model
 
 
 from models.base_model import BaseModel, Base
+from models.comment import Comment
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
@@ -34,3 +35,16 @@ class Bug(BaseModel, Base):
         Initializes Bug instance
         """
         super().__init__(*args, **kwargs)
+
+    def comments(self):
+        """
+        Retrieves all the comments for a specific bug
+        """
+        from models import storage
+
+        comment_list = []
+        for comment in storage.all(Comment).values():
+            if comment.bug_id == self.id:
+                comment_list.append(comment)
+
+        return comment_list
