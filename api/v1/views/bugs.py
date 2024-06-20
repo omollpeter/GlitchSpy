@@ -40,7 +40,19 @@ def get_bug(bug_id):
     bug = storage.get(Bug, bug_id)
     if not bug:
         abort(404)
-    return jsonify(bug.to_dict())
+
+    if bug.status == "public":
+        bug_dict = bug.to_dict()
+
+        bug_comments = bug.comments()
+        comment_strings = []
+        for comm in bug_comments:
+            comment_strings.append(comm.to_dict()["comment_string"])
+
+        bug_dict["comments"] = comment_strings
+
+        return jsonify(bug_dict)
+    abort(404)
 
 
 @app_views.route("/bugs/<bug_id>", methods=["DELETE"], strict_slashes=False)
@@ -69,7 +81,7 @@ def update_bug(bug_id):
     
     data = request.get_json()
     if not data:
-        abort(400, description="No JSON data")
+        abort(400, "Not JSON data")
     
     ignored_keys = ["id", "updated_at", "created_at"]
 
@@ -88,4 +100,34 @@ def create_bug_report():
     """
     data = request.get_json()
     if not data:
-        pass
+        abort(400, "Not JSON data")
+
+    attrs = [
+        "name", "description", "category", "severity", "product",
+        "attachment"
+    ]
+
+    if not data.get("name"):
+        abort(400, "Missing name")
+
+    if not data.get("category"):
+        abort(400, "Missing category")
+
+    if not data.get("severity"):
+        abort(400, "Missing severity")
+    
+    if not data.get("product"):
+        abort(400, "Missing product")
+
+    for key in data.keys():
+        if key not in attrs:
+            del data[key]
+
+    data["reportedBy"] = "anonymous"
+    data["status"] = "public"
+
+    bug = Bug(**data)
+    bug.save()
+
+    return make_response(jsonify(bug.to_dict())), 201
+    

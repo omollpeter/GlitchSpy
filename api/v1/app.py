@@ -41,6 +41,14 @@ def not_found(error):
     return make_response(jsonify({"error": "Not found"}), 404)
 
 
+@app.errorhandler(400)
+def error_400(error):
+    """
+    Handles all the errors associated with bad request
+    """
+    return make_response(jsonify({"error": error.description})), 400
+
+
 if __name__ == "__main__":
     host = os.environ.get("GSPY_API_HOST", "0.0.0.0")
     port = os.environ.get("GSPY_API_PORT", "5000")
