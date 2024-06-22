@@ -8,6 +8,7 @@ from models import storage
 from models.bug import Bug
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
+from markupsafe import escape # Prevents injection attacks
 
 
 @app_views.route("/bugs", methods=["GET"], strict_slashes=False)
@@ -37,6 +38,7 @@ def get_bug(bug_id):
     """
     Retrieves a specific bug
     """
+    bug_id = escape(bug_id)
     bug = storage.get(Bug, bug_id)
     if not bug:
         abort(404)
@@ -60,6 +62,7 @@ def delete(bug_id):
     """
     Deletes a bug report provided the user is authenticated
     """
+    bug_id = escape(bug_id)
     bug = storage.get(Bug, bug_id)
     if not bug:
         abort(404)
@@ -75,6 +78,7 @@ def update_bug(bug_id):
     """
     Updates a bug report
     """
+    bug_id = escape(bug_id)
     bug = storage.get(Bug, bug_id)
     if not bug:
         abort(404)
