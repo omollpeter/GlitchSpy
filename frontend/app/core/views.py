@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains all the routes for GlitchSpy app
+This module contains the routes for all core functionalities and their
+corresponding view functions
 It also imports some modules from the flask library
     render_template - To render the defined templates in the applications
                         front-end
@@ -12,12 +13,15 @@ It also imports some modules from the flask library
 """
 
 
-from app import app
+from flask import Blueprint
 from flask import render_template, flash, redirect, url_for
 from markupsafe import escape
 
 
-@app.route("/gspy", methods=["GET"])
+core_bp = Blueprint("core", __name__, url_prefix="/gspy")
+
+
+@core_bp.route("", methods=["GET"])
 def gspy_landing():
     """
     View function for the GlitchSpy landing page
@@ -25,23 +29,7 @@ def gspy_landing():
     return "<h1>Landing page</h1>"
 
 
-@app.route("/gspy/login", methods=["GET", "POST"])
-def login_page():
-    """
-    View function for the login page
-    """
-    return "<h1>Login page</h1>"
-
-
-@app.route("/gspy/register", methods=["GET", "POST"])
-def signup_page():
-    """
-    View function for the registration page
-    """
-    return "<h1>Join Our Community</h1>"
-
-
-@app.route("/gspy/api", methods=["GET"])
+@core_bp.route("/api", methods=["GET"])
 def api_docs():
     """
     View function for the API documentation page
@@ -49,22 +37,22 @@ def api_docs():
     return "<h1>API Documentation</h1>"
 
 
-@app.route("/gspy/blog", methods=["GET"])
+@core_bp.route("/blog", methods=["GET"])
 def blog_page():
     """
-    View function the applications blog page
+    View function the core_bplications blog page
     """
     return "<h1>Blog page</h1"
 
 
-@app.route("/gspy/bugreports", methods=["GET"])
+@core_bp.route("/bugreports", methods=["GET"])
 def all_bug_reports():
     """
     View function for displaying all reported bugs
     """
     return "<h1>Bug reports</h1>"
 
-@app.route("/gspy/bugreports/<id>", methods=["GET"])
+@core_bp.route("/bugreports/<id>", methods=["GET"])
 def view_bug(id):
     """
     View function for displaying a specific reported bug
@@ -72,7 +60,7 @@ def view_bug(id):
     id = escape(id)
     return "<h1>Bug report</h1>"
 
-@app.route("/gspy/postbug", methods=["GET", "POST"])
+@core_bp.route("/postbug", methods=["GET", "POST"])
 def post_bug():
     """
     View function for creating a bug report page
