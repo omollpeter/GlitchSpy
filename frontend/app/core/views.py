@@ -16,6 +16,9 @@ It also imports some modules from the flask library
 from flask import Blueprint
 from flask import render_template, flash, redirect, url_for
 from markupsafe import escape
+from frontend.app import db
+
+
 
 
 core_bp = Blueprint("core", __name__, url_prefix="/gspy")
@@ -26,7 +29,7 @@ def gspy_landing():
     """
     View function for the GlitchSpy landing page
     """
-    return "<h1>Landing page</h1>"
+    return render_template("home.html")
 
 
 @core_bp.route("/api", methods=["GET"])

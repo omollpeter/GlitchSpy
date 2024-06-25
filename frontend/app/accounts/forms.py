@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField
+from wtforms import EmailField, PasswordField, StringField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from models import storage
 from models.user import User
+from frontend.app import db
 
 
 
@@ -21,11 +22,11 @@ class RegisterForm(FlaskForm):
         ],
     )
 
-    def validate(self):
+    def validate(self, **kwargs):
         initial_validation = super(RegisterForm, self).validate()
         if not initial_validation:
             return False
-        user = User.query.filter_by(email=self.email.data).first()
+        user = db.session.query(User).filter_by(email=self.email.data).first()
         if user:
             self.email.errors.append("Email already registered")
             return False
@@ -38,3 +39,5 @@ class RegisterForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
+    remember_me = BooleanField("Remember me")
+    submit = SubmitField("Sign In")

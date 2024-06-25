@@ -44,7 +44,7 @@
             {% endif %}
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-        <p class="text-center mt-3">Already registered? <a href="#">Login now</a></p>
+        <p class="text-center mt-3">Already registered? <a href="{{ url_for('accounts.login_page') }}">Login now</a></p>
       </form>
     </main>
   </div>
