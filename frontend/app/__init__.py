@@ -4,6 +4,7 @@ This init file defines the application instance
 """
 
 
+import os
 from models import storage
 from models.user import User
 from flask import Flask
@@ -14,6 +15,10 @@ from flask_login import LoginManager # This lets applicatiom and Flask-login wor
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Create uploads folder if it does not exist
+if not os.path.exists(app.config["UPLOAD_FOLDER"]):
+    os.makedirs(app.config["UPLOAD_FOLDER"])
 
 # Navigate to resource with or without trailing slash
 app.url_map.strict_slashes = False

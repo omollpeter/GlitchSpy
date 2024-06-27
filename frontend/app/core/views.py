@@ -13,15 +13,31 @@ It also imports some modules from the flask library
 """
 
 
+import os
+from werkzeug.utils import secure_filename
 from flask import Blueprint
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from markupsafe import escape
 from frontend.app import db
+from frontend.config import Config
+from frontend.app.core.forms import BugForm
+from frontend.app.core.models import Bug
+from flask_login import current_user
 
 
 
 
 core_bp = Blueprint("core", __name__, url_prefix="/gspy")
+
+# Define variable to hold allowed extensions for uploads
+ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif", "webp", "webm", "mp4", "avi", "mkv"])
+
+def allowed_file(filename):
+    """
+    Returns whether or not a file can be uploaded or not
+    """
+    return "." in filename and filename.lower().rsplit(".", 1)[1] in\
+     ALLOWED_EXTENSIONS
 
 
 @core_bp.route("", methods=["GET"])
@@ -68,4 +84,31 @@ def post_bug():
     """
     View function for creating a bug report page
     """
-    return "<h1>Report Bug</h1>"
+    form = BugForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        category = form.category.data
+        severity = form.severity.data
+        product = form.product.data
+        attachment = request.files.get("attachment") # Or form.attachment.data
+        if attachment and allowed_file(attachment.filename):
+            attachment = secure_filename(attachment.filename)
+            attachment.save(os.path.join(Config.UPLOAD_FOLDER, attachment))
+            attachment_path = Config.UPLOAD_FOLDER + "/" + attachment
+        else:
+            attachment_path = ""
+        description = form.description.data
+        if current_user.is_authenticated:
+            reportedBy = current_user.first_name + " " + current_user.last_name
+        else:
+            reportedBy = "anonymous"
+        bug = Bug(
+            name=name, category=category, severity=severity, product=product, attachment=attachment_path, reportedBy=reportedBy
+        )
+
+        db.session.add(bug)
+        db.session.commit()
+        flash("Bug reported successfully")
+        return redirect(url_for("core.view_bug", id=bug.id))
+    return render_template("post_bug.html", form=form)

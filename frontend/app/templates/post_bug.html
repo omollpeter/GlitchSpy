@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Report a Bug</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <p>
+        {{ form.name.label }}  {{ form.name(size=50)}}
+        {% for error in form.name.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.description.label }} {{ form.description(size=50)}}
+    </p>
+    <p>
+        {{ form.product.label }}  {{ form.product(size=50)}}
+        {% for error in form.product.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.category.label }}  {{ form.category() }}
+        {% for error in form.category.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.severity.label }}  {{ form.severity() }}
+        {% for error in form.severity.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.attachment.label }}  {{ form.attachment() }}
+        {% for error in form.attachment.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+{% endblock %}

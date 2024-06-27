@@ -33,3 +33,4 @@ class Config:
     SQLALCHEMY_DATABASE_URI = DATABASE_URI
     WTF_CSRF_ENABLED = True
     DEBUG = True
+    UPLOAD_FOLDER = os.path.realpath(".") + "/frontend/app/static/uploads"

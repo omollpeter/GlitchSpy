@@ -6,7 +6,7 @@ This module contains class definition for Bug Model
 
 from models.base_model import BaseModel, Base
 from models.comment import Comment
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer
 from sqlalchemy.orm import relationship
 
 
@@ -24,6 +24,7 @@ class Bug(BaseModel, Base):
     attachment = Column(String(1028), nullable=True)
     reportedBy = Column(String(60), default="anonymous")
     status = Column(String(20), default="public", nullable=False)
+    upvotes = Column(Integer, default=0, nullable=False)
     comments = relationship(
         "Comment",
         backref="bug",

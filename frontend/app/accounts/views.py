@@ -42,6 +42,7 @@ def get_current_user():
 def login_page():
     if current_user.is_authenticated:
         flash("You are already logged in.", "info")
+        print(current_user.first_name + " " + current_user.last_name)
         return redirect(url_for("core.gspy_landing"))
     form = LoginForm()
     if form.validate_on_submit():
