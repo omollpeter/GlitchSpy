@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Reported Bugs</h1>
+<div class="bugs-container">
+    {% for bug in bugs%}
+    <div data-name="{{ bug.name }}" data-id="{{ bug.id }}" class="bug">
+        <h3>Name: {{ bug.name }}</h3>
+        <h3>Category: {{ bug.category }}</h3>
+        {% if bug.attachment %}
+            {% set ext = bug.attachment|get_ext %}
+            {% set filename = bug.attachment.rsplit("/", 1)[1] %}
+            {% if ext in video_ext %}
+                <video src="../static/uploads/{{ filename }}" width="100" height="100" controls></video>
+            {% elif ext in image_ext %}
+                <p>{{ bug.attachment }}</p>
+                <img src="../static/uploads/{{ filename }}" alt="">
+            {% endif %}
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

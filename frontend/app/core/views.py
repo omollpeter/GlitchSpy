@@ -16,7 +16,7 @@ It also imports some modules from the flask library
 import os
 from werkzeug.utils import secure_filename
 from flask import Blueprint
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from markupsafe import escape
 from frontend.app import db
 from frontend.config import Config
@@ -30,7 +30,7 @@ from flask_login import current_user
 core_bp = Blueprint("core", __name__, url_prefix="/gspy")
 
 # Define variable to hold allowed extensions for uploads
-ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif", "webp", "webm", "mp4", "avi", "mkv"])
+ALLOWED_EXTENSIONS = set(["png", "jpg", "jpeg", "gif", "webp", "webm", "mp4", "avi", "mkv", "ogg"])
 
 def allowed_file(filename):
     """
@@ -69,7 +69,10 @@ def all_bug_reports():
     """
     View function for displaying all reported bugs
     """
-    return "<h1>Bug reports</h1>"
+    video_ext = ("webm", "mp4", "avi", "mkv")
+    image_ext = ("png", "jpg", "jpeg", "gif", "webp")
+    bugs = db.session.query(Bug).all()
+    return render_template("bugs.html", bugs=bugs, video_ext=video_ext, image_ext=image_ext)
 
 @core_bp.route("/bugreports/<id>", methods=["GET"])
 def view_bug(id):
@@ -86,16 +89,18 @@ def post_bug():
     """
     form = BugForm()
 
+    session["form_data"] = request.form
     if form.validate_on_submit():
         name = form.name.data
         category = form.category.data
         severity = form.severity.data
         product = form.product.data
         attachment = request.files.get("attachment") # Or form.attachment.data
+        print(attachment.filename)
         if attachment and allowed_file(attachment.filename):
-            attachment = secure_filename(attachment.filename)
-            attachment.save(os.path.join(Config.UPLOAD_FOLDER, attachment))
-            attachment_path = Config.UPLOAD_FOLDER + "/" + attachment
+            attachment_name = secure_filename(attachment.filename)
+            attachment.save(os.path.join(Config.UPLOAD_FOLDER, attachment_name))
+            attachment_path = Config.UPLOAD_FOLDER + "/" + attachment_name
         else:
             attachment_path = ""
         description = form.description.data
@@ -103,12 +108,14 @@ def post_bug():
             reportedBy = current_user.first_name + " " + current_user.last_name
         else:
             reportedBy = "anonymous"
+        if not description:
+            description = ""
         bug = Bug(
-            name=name, category=category, severity=severity, product=product, attachment=attachment_path, reportedBy=reportedBy
+            name=name, category=category, severity=severity, product=product, attachment=attachment_path, reportedBy=reportedBy, description=description
         )
 
         db.session.add(bug)
         db.session.commit()
-        flash("Bug reported successfully")
+        flash("Bug reported successfully", "success")
         return redirect(url_for("core.view_bug", id=bug.id))
     return render_template("post_bug.html", form=form)

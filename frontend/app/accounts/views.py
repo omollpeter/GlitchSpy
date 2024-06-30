@@ -13,7 +13,7 @@ It also imports some modules from the flask library
 
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask import Blueprint
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from frontend.app.accounts.forms import RegisterForm, LoginForm
 from flask import g
 from flask_login import current_user, login_user, logout_user, login_required
@@ -51,7 +51,7 @@ def login_page():
 
         if user and user.password == password:
             login_user(user, remember=form.remember_me.data)
-            return redirect(url_for("core.gspy_landing"))
+            return redirect(session.pop("next", url_for("core.gspy_landing")))
         else:
             flash("Invalid email and/or password.", "danger")
             return render_template("login.html", form=form)
@@ -78,6 +78,13 @@ def signup_page():
             return redirect(url_for("core.gspy_landing"))
 
     return render_template("signup.html", form=form)
+
+@accounts_bp.route("/profile")
+def profile_page():
+    if current_user.is_authenticated:
+        return "<h1>Profile page</h1>"
+    session["next"] = request.url
+    return redirect(url_for("accounts.login_page"))
 
 @accounts_bp.route("/logout")
 @login_required

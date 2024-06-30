@@ -50,7 +50,8 @@ class BugForm(FlaskForm):
         validators=[DataRequired()]
     )
     attachment = FileField(
-        "Bug Video/Image", validators=[file_size_limit(2 * 1024 * 1024)]
+        "Bug Video/Image",
+        validators=[file_size_limit(2 * 1024 * 1024)]
     )
 
     submit = SubmitField("Report")

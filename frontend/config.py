@@ -34,3 +34,4 @@ class Config:
     WTF_CSRF_ENABLED = True
     DEBUG = True
     UPLOAD_FOLDER = os.path.realpath(".") + "/frontend/app/static/uploads"
+    MAX_CONTENT_LENGTH = 2 * 1024 * 1024
