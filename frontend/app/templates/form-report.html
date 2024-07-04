@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block css%}
+<link rel="stylesheet" href="../static/styles/form-report.css">
+{% endblock %}
+
+{% include 'dark-nav.html' %}
+
+{% block content %}
+<!-- <h1>Report a Bug</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <p>
+        {{ form.name.label }}  {{ form.name(size=50)}}
+        {% for error in form.name.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.description.label }} {{ form.description(size=50)}}
+    </p>
+    <p>
+        {{ form.product.label }}  {{ form.product(size=50)}}
+        {% for error in form.product.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.category.label }}  {{ form.category() }}
+        {% for error in form.category.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.severity.label }}  {{ form.severity() }}
+        {% for error in form.severity.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.attachment.label }}  {{ form.attachment() }}
+        {% for error in form.attachment.errors %}
+        <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+
+    <p>
+        {{ form.submit() }}
+    </p>
+</form> -->
+<main class="main-content">
+    <div class="report-bug-box">
+        <h1>Report a bug</h1>
+
+        <div class="report-form">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="report-form-field">
+                    <label for="bug-name">Bug name</label>
+                    <input class="bug-name" type="text" />
+                </div>
+
+                <div class="report-form-field">
+                    <label for="bug-name">Description</label>
+                    <textarea name="description" id=""></textarea>
+                </div>
+
+                <div class="report-form-field">
+                    <label for="product-name">Product name</label>
+                    <input class="product-name" type="text" />
+                </div>
+
+                <div class="report-form-field">
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="Network">Network</option>
+                    </select>
+                </div>
+
+                <div class="report-form-field">
+                    <label for="severity">Severity</label>
+                    <select name="severity" id="severity">
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+
+                <div class="report-form-field">
+                    <label for="attachment">Attachment</label>
+                    <input type="file" id="attachment" name="attachment">
+                    <span>Supported formats: png, jpg, jpeg, gif, webp, webm, mp4, avi, mkv, ogg (Max 2MB)</span>
+                </div>
+
+                <input type="submit" value="Report">
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

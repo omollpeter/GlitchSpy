@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    z-index: 100;
+}
+
+
+header.dark {
+    background: transparent;
+}
+
+.logo img {
+    height: 35px;
+    width: 140px;
+}
+
+.navigation-bar-light,
+.navigation-bar-dark {
+    margin: 21px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 600;
+}
+
+.nav-links-dark {
+    margin: 0 auto;
+}
+
+.navigation-bar-dark .nav-links-dark a {
+    margin-right: 20px;
+    font-size: 17px;
+    color: #fff;
+}
+
+.navigation-bar-dark .nav-links a:hover,
+.nav-login-link:hover {
+    text-decoration: underline;
+}
+
+.nav-login-link-dark{
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.nav-reg-button-dark {
+    margin-left: 20px;
+    background-color: #fff;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #0b0d1a;
+    font-size: 15px;
+}
+
+.nav-reg-button-dark:hover {
+    background-color: #0b0d1a;
+    color: #fff;
+}
+
+.navigation-bar-light .nav-links-light a {
+    margin-right: 20px;
+    font-size: 17px;
+    color: #0b0d1a;
+    
+}
+
+.navigation-bar-light .nav-links-light a:hover,
+.nav-login-link-light:hover {
+    text-decoration: underline;
+}
+
+.nav-login-link-light {
+    color: #0b0d1a;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.nav-reg-button-light {
+    margin-left: 20px;
+    background-color: #0b0d1a;
+    border: 1px solid #0b0d1a;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.nav-reg-button-light:hover {
+    background-color: #fff;
+    color: #0b0d1a;
+}

@@ -1,0 +1,111 @@
+main {
+    height: 100vh;
+    background-image: url("../images/back-image.png");
+    background-position: center;
+}
+
+.report-bug-box {
+    background: white;
+    color: #0b0d1a;
+    width: 700px;
+    height: 75vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.15);
+}
+
+.report-bug-box h1 {
+    font-family: "Lexend Deca", sans-serif;
+    text-align: center;
+}
+
+.report-form {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.report-form-field {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 8px 2px;
+    gap: 8px;
+    /* margin-left: 10px; */
+}
+
+.report-form-field label {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 15px;
+    color: #0b0d1a;
+}
+
+.report-form-field input,
+.report-form-field select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #0b0d1a;
+    border-radius: 5px;
+    font-family: "Commissioner", sans-serif;
+    font-size: 13px;
+}
+
+.report-form-field select option {
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.report-form-field textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #0b0d1a;
+    border-radius: 5px;
+}
+
+.report-form input[type="file"] {
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.report-form input[type="file"]::file-selector-button {
+    background-color: #0b0d1a;
+    color: #fff;
+    font-weight: 400;
+    padding: 3.2px 20px;
+    text-align: center;
+    border-radius: 5px;
+    outline: none;
+    font-family: "Commissioner", sans-serif;
+    cursor: pointer;
+}
+
+.report-form-field span {
+    font-family: "Commissioner", sans-serif;
+    font-weight: 300;
+    color: orange;
+}
+
+.report-form input[type="submit"] {
+    width: 100%;
+    height: 35px;
+    margin-top: 25px;
+    border-radius: 10px;
+    outline: none;
+    font-family: "Lexend Deca", sans-serif;
+    background: #0b0d1a;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    opacity: 1;
+}
+
+.report-form input[type="submit"]:hover {
+    opacity: .8;
+}

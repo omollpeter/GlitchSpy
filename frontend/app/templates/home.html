@@ -1,5 +1,35 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block css%}
+<link rel="stylesheet" href="../static/styles/home.css">
+{% endblock %}
 
+{% include 'dark-nav.html' %}
+
+{% block content %}
+<section class="hero-section" id="hero">
+    <div class="hero-content">
+      <h1>All in one bugs and defects reporting tool</h1>
+      <p>
+        GlitchSpy is an intuitive application that fast-tracks the process of
+        tracking and exposing software issues through user's own submissions
+        and reports.
+      </p>
+      <div class="call-to-action">
+        <a href="#" class="report-bug-button"> Report a bug </a>
+        <a href="#" class="view-reports-button"> View reports </a>
+      </div>
+    </div>
+
+    <div class="partnerships">
+      <h2>We are in partnership with 100+ organizations</h2>
+      <div class="partners">
+
+      </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+
+</section>
 {% endblock %}

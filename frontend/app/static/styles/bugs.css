@@ -1,0 +1,110 @@
+.bug-card {
+    width: 400px;
+    height: 480px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    margin: 20px auto;
+    background-color: #fff;
+    position: relative;
+}
+
+.bug-card:hover {
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028), 12.5px 12.5px 10px rgba(0, 0, 0, 0.035), 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042), 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05), 100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+.bug-name,
+.bug-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bug-title {
+    margin: 0;
+}
+
+.severity {
+    font-family: Lexend Deca;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.high {
+    color: white;
+    background-color: #ff0000;
+}
+
+.bug-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.bug-body {
+    line-height: 1.5;
+}
+
+.bug-body p {
+    font-family: Commissioner, sans-serif;
+    opacity: .7;
+}
+
+
+h2 {
+    font-family: Lexend Deca, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+.product-name {
+    font-family: Lexend Deca, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 17px;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    font-family: Commissioner, sans-serif;
+    opacity: .7;
+    margin-bottom: 5px;
+}
+
+strong {
+    font-family: Lexend;
+    font-weight: bold;
+}
+
+.view-in-details {
+    background-color: #0b0d1a;
+    color: white;
+    align-self: center;
+    max-width: 150px;
+    margin: 10px auto;
+    padding: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.view-in-details:hover {
+    background-color: #2b3361;
+}
+
+.view-in-details h4 {
+    font-family: Commissioner;
+    font-size: 11px;
+    text-align: center;
+}

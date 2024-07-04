@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+    <!-- <div class="toggle-sidebar" id="toggleSidebar">&#9776;</div> -->
+    <!-- <div class="navbar">
+        <div class="logo">GlitchSpy</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#reports">Reports</a>
+            <a href="#api">API</a>
+            <a href="#blog">Blog</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="auth-links">
+            <a href="#signin">Sign In</a>
+            <button class="signup-btn">Sign Up</button>
+        </div>
+    </div> -->
+
+{% block css%}
+<link rel="stylesheet" href="{{url_for('static', filename='styles/api.css')}}">
+<link rel="stylesheet" href="../static/styles/bug.css">
+{% endblock %}
+
+{% block content %}
+    <div class="api-container">
+        <nav class="sidebar">
+            <h2>GlitchSpy API</h2>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#authentication">Authentication</a></li>
+                <li><a href="#endpoints">Endpoints</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#errors">Errors</a></li>
+                <li><a href="#faq">FAQs</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <div class="navigate-home">
+                <a href="{{ url_for('core.gspy_landing') }}">Home</a>
+                <a href="{{ url_for('accounts.login_page') }}">Sign In</a>
+            </div>
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>Welcome to the GlitchSpy API documentation. Here you'll find information on how to interact with the GlitchSpy application, which tracks and exposes software bugs and defects.</p>
+            </section>
+            <section id="authentication">
+                <h2>Authentication</h2>
+                <p>Some API routes require authentication. Use the following format for the Authorization header: <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+            </section>
+            <section id="endpoints">
+                <h2>Endpoints</h2>
+                <h3>GET /api/bugs</h3>
+                <p>Description: Retrieves a list of all reported bugs</p>
+                <pre><code>{
+  "bugs": [
+    {
+      "id": "number/string",
+      "title": "string",
+      "description": "string",
+      "category": "string",
+      "severity": "string",
+      "product": "string",
+      "version": "string",
+      "postedAt": "datetime",
+      "status": "string",
+      "attachment": "videoUrl/imageUrl"
+    },
+    ...
+  ]
+}</code></pre>
+
+                <h3>GET /api/bugs/:id</h3>
+                <p>Description: Retrieves detailed information about a specific bug report. An id must be included in the path</p>
+                <pre><code>{
+  "id": "number",
+  "title": "string",
+  "description": "string",
+  "category": "string",
+  "severity": "string",
+  "product": "string",
+  "version": "string",
+  "attachments": "url",
+  "postedAt": "datetime",
+  "upvote": "number",
+  "comments": [
+    {
+      "id": "number",
+      "userId": "number",
+      "comment": "string",
+      "postedAt": "datetime"
+    }
+  ]
+}</code></pre>
+
+                <h3>POST /api/bugs</h3>
+                <p>Description: Creates a new bug report</p>
+                <p>Request Body:</p>
+                <pre><code>{
+  "title": "string",
+  "description": "string",
+  "category": "string",
+  "severity": "string",
+  "product": "string",
+  "version": "string",
+  "attachments": ["video/image"]
+}</code></pre>
+                <p>Response:</p>
+                <pre><code>{
+  "message": "Bug report created successfully",
+  "bug": {
+    "id": "number",
+    "title": "string",
+    "description": "string",
+    "category": "string",
+    "severity": "string",
+    "product": "string",
+    "version": "string",
+    "attachments": "url",
+    "postedAt": "datetime",
+    "status": "string"
+  }
+}</code></pre>
+
+                <h3>POST /api/bugs/:id/upvote</h3>
+                <p>Description: Upvotes a bug report</p>
+                <p>Request Header:</p>
+                <pre><code>Authorization: Bearer &lt;token&gt;</code></pre>
+                <p>Response:</p>
+                <pre><code>{
+  "message": "Bug upvoted successfully",
+  "upvotes": "number"
+}</code></pre>
+
+                <h3>POST /api/bugs/:id/comments</h3>
+                <p>Description: Adds a comment to a bug report</p>
+                <p>Request Body:</p>
+                <pre><code>{
+  "comment": "string"
+}</code></pre>
+                <p>Response:</p>
+                <pre><code>{
+  "message": "Comment added successfully",
+  "comment": {
+    "id": "number",
+    "userId": "number",
+    "comment": "string",
+    "postedAt": "datetime"
+  }
+}</code></pre>
+
+<!-- <h3>GET /api/bugs</h3>
+<p>Description: Retrieves a list of all reported bugs</p>
+<pre><code id="getBugsCode">curl -X GET https://api.glitchspy.com/api/bugs</code><button onclick="copyCode('getBugsCode')">Copy</button></pre>
+
+<h3>GET /api/bugs/:id</h3>
+<p>Description: Retrieves detailed information about a specific bug report</p>
+<pre><code id="getBugByIdCode">curl -X GET https://api.glitchspy.com/api/bugs/123</code><button onclick="copyCode('getBugByIdCode')">Copy</button></pre>
+
+<h3>POST /api/bugs</h3>
+<p>Description: Creates a new bug report</p>
+<pre><code id="postBugCode">curl -X POST https://api.glitchspy.com/api/bugs -H "Content-Type: application/json" -d '{ "title": "New Bug", "description": "Description", "category": "UI", "severity": "Medium", "product": "GlitchSpy", "version": "1.0" }'</code><button onclick="copyCode('postBugCode')">Copy</button></pre> -->
+
+            </section>
+            <section id="examples">
+                <h2>Examples</h2>
+                <p>Some example API calls:</p>
+
+                <h3>GET /api/bugs</h3>
+                <pre><code>curl -X GET "http://yourdomain.com/api/bugs"</code></pre>
+
+                <h3>GET /api/bugs/:id</h3>
+                <pre><code>curl -X GET "http://yourdomain.com/api/bugs/123"</code></pre>
+
+                <h3>POST /api/bugs</h3>
+                <pre><code>curl -X POST "http://yourdomain.com/api/bugs" \
+-H "Content-Type: application/json" \
+-d '{
+  "title": "Bug title",
+  "description": "Bug description",
+  "category": "UI",
+  "severity": "High",
+  "product": "Product name",
+  "version": "1.0",
+  "attachments": ["image.png"]
+}'</code></pre>
+
+                <h3>POST /api/bugs/:id/upvote</h3>
+                <pre><code>curl -X POST "http://yourdomain.com/api/bugs/123/upvote" \
+-H "Authorization: Bearer YOUR_TOKEN"</code></pre>
+
+                <h3>POST /api/bugs/:id/comments</h3>
+                <pre><code>curl -X POST "http://yourdomain.com/api/bugs/123/comments" \
+-H "Content-Type: application/json" \
+-d '{
+  "comment": "This is a comment"
+}'</code></pre>
+            </section>
+            <section id="errors">
+                <h2>Errors</h2>
+                <p>Some common errors:</p>
+                <pre><code>{
+  "error": "Not found"
+} // 404
+
+{
+  "error": "Not a valid json"
+} // 400</code></pre>
+            </section>
+            <section id="faq">
+                <h2>FAQs</h2>
+                <div class="faq-item">
+                    <h3 class="faq-question">What is the GlitchSpy API?</h3>
+                    <p class="faq-answer">The GlitchSpy API is a service that allows you to interact with the GlitchSpy application to track and manage software bugs and defects.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I authenticate with the API?</h3>
+                    <p class="faq-answer">You can authenticate with the API using a Bearer token in the Authorization header. The format is: <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">What formats does the API support for attachments?</h3>
+                    <p class="faq-answer">The API supports both image and video formats for attachments. You can include these in your bug reports.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">How can I upvote a bug report?</h3>
+                    <p class="faq-answer">You can upvote a bug report by sending a POST request to <code>/api/bugs/:id/upvote</code> with the appropriate authorization token.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+          // Function to copy code snippet to clipboard
+        function copyCode(elementId) {
+            var codeSnippet = document.getElementById(elementId).innerText.trim();
+
+            var tempInput = document.createElement("textarea");
+            tempInput.value = codeSnippet;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            alert("Code snippet copied to clipboard!");
+        }
+
+        // // Function to toggle sidebar visibility
+        // const toggleSidebar = document.getElementById('toggleSidebar');
+        // const sidebar = document.getElementById('sidebar');
+
+        // toggleSidebar.addEventListener('click', () => {
+        //     sidebar.classList.toggle('hidden');
+        // });
+    </script>
+{% endblock %}

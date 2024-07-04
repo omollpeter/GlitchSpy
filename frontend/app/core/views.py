@@ -53,7 +53,7 @@ def api_docs():
     """
     View function for the API documentation page
     """
-    return "<h1>API Documentation</h1>"
+    return render_template("api.html")
 
 
 @core_bp.route("/blog", methods=["GET"])

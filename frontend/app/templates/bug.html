@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block css%}
+<link rel="stylesheet" href="../static/styles/bug.css">
+{% endblock %}
+
+{% include 'dark-nav.html' %}
+
+{% block content %}
+<div class="container">
+    <header class="header">
+        <h1>Bug Report Details</h1>
+    </header>
+    <div class="main">
+        <section class="bug-report">
+            <h2 class="bug-report__title">Product Name: </h2> <div class="bug-report__details">
+                <h3 class="bug-report__details__heading">Bug Name:</h3> <p class="bug-report__details__content">Bug name</p>  </div>
+            <div class="bug-report__details">
+                <h3 class="bug-report__details__heading">Severity:</h3>  <p class="bug-report__details__content">HIGH SEVERITY</p> 
+            </div>
+            <div class="bug-report__description">
+                <h3 class="bug-report__description__heading">Bug Description:</h3>
+                <p class="bug-report__description__content">Bug description: A detailed explanation of the bug, describing the issue or problem encountered. This section should provide enough information for the development team to understand the nature of the bug and how to reproduce it.</p>
+            </div>
+            <div class="bug-report__additional-details">
+                <h3 class="bug-report__additional-details__heading">Additional Details:</h3>
+                <div class="bug-report__additional-details__content">
+                    <p>Category: UI</p>  <p>Product: Product Name</p>  <p>Version: 1.0</p>  </div>
+            </div>
+            <div class="bug-report__attachments">
+                <h3>Attachments:</h3>
+                <ul class="bug-report__attachments__list">
+                    <li><a href="#">attachment1.txt</a></li>
+                    <li><a href="#">screenshot.png</a></li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <a href="{{ url_for('core.all_bug_reports')}}" class="button">Back to All Bug Reports</a>
+        </div>
+        <section class="comments">
+            <h2>Comments</h2>
+            <ul class="comments__list">
+                </ul>
+            </section>
+    </div>
+    <footer class="footer">
+        <p>© 2024 Bug Tracking System</p>
+    </footer>
+</div>
+
+{% endblock %}

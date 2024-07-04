@@ -1,0 +1,131 @@
+/* style.css */
+
+body {
+    font-family: Commissioner, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header h1 {
+    font-family: Lexend Deca, sans-serif;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.main {
+    padding: 20px;
+}
+
+.bug-report h2,
+.bug-report h3 {
+    font-family: Lexend, sans-serif;
+    color: #2c3e50;
+}
+
+.bug-report__title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.bug-report__details,
+.bug-report__description,
+.bug-report__additional-details,
+.bug-report__attachments {
+    margin-bottom: 20px;
+}
+
+.bug-report__details__heading,
+.bug-report__description__heading,
+.bug-report__additional-details__heading {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.bug-report__details__content,
+.bug-report__description__content,
+.bug-report__additional-details__content p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.bug-report__attachments__list {
+    list-style: none;
+    padding: 0;
+}
+
+.bug-report__attachments__list li {
+    margin-bottom: 5px;
+}
+
+.bug-report__attachments__list a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.bug-report__attachments__list a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.comments {
+    margin-top: 30px;
+}
+
+.comments__list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments__list li {
+    margin-bottom: 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #eaeaea;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+    color: #7f8c8d;
+}
