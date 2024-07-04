@@ -2,22 +2,26 @@
 <header class="dark">
     <div class="navigation-bar-dark">
         <div class="logo">
-            <a href="">
+            <a href="{{ url_for('core.gspy_landing') }}">
                 <img src="../static/images/light-logo.svg" alt="GlitchSpy Logo">
             </a>
         </div>
 
         <nav class="nav-links-dark">
-            <a href="#">Home</a>
-            <a href="#">Reports</a>
-            <a href="#">API</a>
+            <a href="{{ url_for('core.gspy_landing') }}">Home</a>
+            <a href="{{ url_for('core.all_bug_reports') }}">Reports</a>
+            <a href="{{ url_for('core.api_docs') }}">API</a>
             <a href="#">Blog</a>
             <a href="#">About</a>
         </nav>
 
         <div class="login-register">
-            <a href="#" class="nav-login-link-dark">Sign In</a>
-            <a href="#" class="nav-reg-button-dark">Join Our Community</a>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('accounts.logout') }}" class="nav-reg-button-dark">Logout</a>
+            {% else %}
+            <a href="{{ url_for('accounts.login_page') }}" class="nav-login-link-dark">Sign In</a>
+            <a href="{{ url_for('accounts.signup_page') }}" class="nav-reg-button-dark">Join Us</a>
+            {% endif %}
         </div>
     </div>
 </header>

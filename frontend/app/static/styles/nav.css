@@ -12,7 +12,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     z-index: 100;
 }
 
@@ -28,7 +28,7 @@ header.dark {
 
 .navigation-bar-light,
 .navigation-bar-dark {
-    margin: 21px 100px;
+    margin: 10px 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;

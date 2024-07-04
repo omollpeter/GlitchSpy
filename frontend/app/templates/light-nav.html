@@ -16,8 +16,12 @@
         </nav>
 
         <div class="login-register">
-            <a href="#" class="nav-login-link-light">Sign In</a>
-            <a href="#" class="nav-reg-button-light">Join Our Community</a>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('accounts.logout') }}" class="nav-login-link-light">Logout</a>
+            {% else %}
+            <a href="{{ url_for('accounts.login_page') }}" class="nav-login-link-light">Sign In</a>
+            <a href="{{ url_for('accounts.signup_page') }}" class="nav-reg-button-light">Join Us</a>
+            {% endif %}
         </div>
     </div>
 </header>

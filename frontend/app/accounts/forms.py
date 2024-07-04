@@ -8,9 +8,12 @@ from frontend.app import db
 
 
 class RegisterForm(FlaskForm):
+    first_name = StringField("First name", validators=[DataRequired(), Length(max=30)])
+    last_name = StringField("Last name", validators=[DataRequired(), Length(max=30)])
     email = EmailField(
         "Email", validators=[DataRequired(), Email(message=None), Length(min=6, max=40)]
     )
+    contact = StringField("Contact", validators=[DataRequired(), Length(max=15)])
     password = PasswordField(
         "Password", validators=[DataRequired(), Length(min=6, max=25)]
     )

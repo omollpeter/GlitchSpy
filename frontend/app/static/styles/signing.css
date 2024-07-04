@@ -13,7 +13,7 @@
 }
 
 .signup-container {
-    height: 80vh;
+    height: 85vh;
 }
 
 .name-fields {
@@ -107,6 +107,13 @@
     color: white;
     font-family: Commissioner, sans-serif;
     background: transparent;
+  }
+
+  .form-container .form-group span {
+    font-family: Commissioner, sans-serif;
+    color: red;
+    font-weight: 200;
+    font-size: 10px;
   }
 
   .form-container .form-submit-btn {
