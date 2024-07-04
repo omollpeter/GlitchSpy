@@ -16,8 +16,8 @@
         and reports.
       </p>
       <div class="call-to-action">
-        <a href="#" class="report-bug-button"> Report a bug </a>
-        <a href="#" class="view-reports-button"> View reports </a>
+        <a href="{{ url_for('core.post_bug') }}" class="report-bug-button"> Report a bug </a>
+        <a href="{{ url_for('core.all_bug_reports') }}" class="view-reports-button"> View reports </a>
       </div>
     </div>
 

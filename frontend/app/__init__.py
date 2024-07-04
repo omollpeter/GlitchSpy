@@ -54,7 +54,7 @@ def file_too_big(error):
     Handles errors that arises from uploading a big file (More than
     recommended size)
     """
-    flash("Uploaded file is too big (Should be 2MB max)", "error")
+    flash("Uploaded file is too big (Should be 2MB max)", "danger")
     return redirect(request.referrer)
 
 with app.app_context():

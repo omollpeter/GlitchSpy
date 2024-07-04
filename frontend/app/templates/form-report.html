@@ -11,9 +11,10 @@
 <form action="" method="post" enctype="multipart/form-data">
     {{ form.csrf_token }}
     <p>
-        {{ form.name.label }}  {{ form.name(size=50)}}
+        {{ form.name.label }}  
+        {{ form.name()}}
         {% for error in form.name.errors %}
-        <span style="color: red">[{{ error }}]</span>
+        <span style="color: red">{{ error }}</span>
         {% endfor %}
     </p>
     <p>
@@ -54,38 +55,53 @@
 
         <div class="report-form">
             <form action="" method="post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
                 <div class="report-form-field">
                     <label for="bug-name">Bug name</label>
-                    <input class="bug-name" type="text" />
+                    {{ form.name(class="bug-name") }}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
                 <div class="report-form-field">
-                    <label for="bug-name">Description</label>
-                    <textarea name="description" id=""></textarea>
+                    <label for="description">Description</label>
+                    {{ form.description() }}
+                    {% for error in form.description.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
                 <div class="report-form-field">
                     <label for="product-name">Product name</label>
-                    <input class="product-name" type="text" />
+                    {{ form.product(class="product-name") }}
+                    {% for error in form.product.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
                 <div class="report-form-field">
                     <label for="category">Category</label>
-                    <select name="category" id="category">
-                        <option value="Network">Network</option>
-                    </select>
+                    {{ form.category() }}
+                    {% for error in form.category.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
                 <div class="report-form-field">
                     <label for="severity">Severity</label>
-                    <select name="severity" id="severity">
-                        <option value="Critical">Critical</option>
-                    </select>
+                    {{ form.severity() }}
+                    {% for error in form.severity.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
                 <div class="report-form-field">
                     <label for="attachment">Attachment</label>
-                    <input type="file" id="attachment" name="attachment">
+                    {{ form.attachment() }}
+                    {% for error in form.attachment.errors %}
+                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    {% endfor %}
                     <span>Supported formats: png, jpg, jpeg, gif, webp, webm, mp4, avi, mkv, ogg (Max 2MB)</span>
                 </div>
 

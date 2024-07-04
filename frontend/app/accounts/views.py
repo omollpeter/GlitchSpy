@@ -65,7 +65,7 @@ def signup_page():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         if db.session.query(User).filter_by(email=form.email.data).first():
-            flash("User is registered already")
+            flash("User is registered already", "danger")
 
         else:
             user = User(email=form.email.data, password=form.password.data)

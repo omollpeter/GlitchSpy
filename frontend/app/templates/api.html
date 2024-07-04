@@ -37,7 +37,11 @@
         <div class="content">
             <div class="navigate-home">
                 <a href="{{ url_for('core.gspy_landing') }}">Home</a>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('accounts.logout') }}">Logout</a>
+                {% else %}
                 <a href="{{ url_for('accounts.login_page') }}">Sign In</a>
+                {% endif %}
             </div>
             <section id="introduction">
                 <h2>Introduction</h2>

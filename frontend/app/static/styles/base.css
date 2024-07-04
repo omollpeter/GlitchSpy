@@ -5,24 +5,63 @@ main {
 }
 
 .error {
-    color: red;
-    margin-bottom: 5px;
-    text-align: center;
-  }
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+}
   
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 
-  .bugs-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
+/* .bugs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
 
-  .bug {
-    border: 1px solid navy;
-    border-radius: 5px;
-    padding: 20px;
-    cursor: pointer;
-  }
+.bug {
+  border: 1px solid navy;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+} */
+
+.flash-messages {
+  font-family: Commissioner, sans-serif;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  list-style: none;
+  background: transparent;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  z-index: 200;
+}
+
+.flash-success {
+  color: green;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-danger {
+  color: red;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-info {
+  color: #F19E39;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-danger img,
+.flash-success img,
+.flash-info img {
+  vertical-align: middle;
+}

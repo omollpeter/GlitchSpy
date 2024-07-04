@@ -118,4 +118,4 @@ def post_bug():
         db.session.commit()
         flash("Bug reported successfully", "success")
         return redirect(url_for("core.view_bug", id=bug.id))
-    return render_template("post_bug.html", form=form)
+    return render_template("form-report.html", form=form)

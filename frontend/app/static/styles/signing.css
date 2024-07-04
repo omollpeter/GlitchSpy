@@ -113,7 +113,14 @@
     font-family: Commissioner, sans-serif;
     color: red;
     font-weight: 200;
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .form-container .form-group span img {
+    vertical-align: middle;
+    height: 15px;
+    width: 15px;
+    margin-right: 2px;
   }
 
   .form-container .form-submit-btn {

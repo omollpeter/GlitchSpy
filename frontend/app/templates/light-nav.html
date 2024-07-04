@@ -2,15 +2,15 @@
 <header class="light">
     <div class="navigation-bar-light">
         <div class="logo">
-            <a href="">
+            <a href="{{ url_for('core.gspy_landing') }}">
                 <img src="../static/images/logoblack.png" alt="GlitchSpy Logo">
             </a>
         </div>
 
         <nav class="nav-links-light">
-            <a href="#">Home</a>
-            <a href="#">Reports</a>
-            <a href="#">API</a>
+            <a href="{{ url_for('core.gspy_landing') }}">Home</a>
+            <a href="{{ url_for('core.all_bug_reports') }}">Reports</a>
+            <a href="{{ url_for('core.api_docs') }}">API</a>
             <a href="#">Blog</a>
             <a href="#">About</a>
         </nav>

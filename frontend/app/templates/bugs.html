@@ -27,31 +27,40 @@
     {% endfor %}
 </div> -->
 
-<div class="bug-card">
-    <div class="product-name">
-        <h1>Product Name</h1>
-    </div>
+<h1 class="reported-bugs-title">Reported Bugs</h1>
+<div class="bugs-container">
+    {% for bug in bugs%}
+    <div class="bug-card" data-name="{{ bug.name }}" data-id="{{ bug.id }}">
+        <div class="product-name">
+            <h1>{{ bug.product }}</h1>
+        </div>
 
-    <div class="bug-name">
-        <h2 class="bug-title">Bug Name: Bug name</h2>
-    </div>
+        <div class="bug-name">
+            <h2 class="bug-title">Bug Name: {{ bug.name }}</h2>
+        </div>
 
-    <div class="bug-header">
-        <h2 class="bug-title">Severity: <span class="severity high">High Severity</span></h2>
-    </div>
-    <div class="bug-body">
-        <h2>Bug Description</h2>
-        <p>Bug description: A detailed explanation of the bug, describing the issue or problem encountered. This section should provide enough information for the development team to understand the nature of the bug and how to reproduce it.</p>
-        <h2>Additional Details</h2>
-        <ul>
-            <li><strong>Category:</strong> UI</li>
-            <li><strong>Product:</strong> Product Name</li>
-            <li><strong>Version:</strong> 1.0</li>
-        </ul>
+        <div class="bug-header">
+            <h2 class="bug-title">Severity: <span class="severity high">{{ bug.severity }}</span></h2>
+        </div>
+        <div class="bug-body">
+            <h2>Bug Description</h2>
+            {% if bug.description %}
+            <p>{{ bug.description }}</p>
+            {% else %}
+            <p>N/A</p>
+            {% endif %}
+            <h2>Additional Details</h2>
+            <ul>
+                <li><strong>Category:</strong> {{ bug.category }}</li>
+                <li><strong>Upvotes:</strong> {{ bug.upvotes }}</li>
+                <li><strong>Attachment:</strong> {% if bug.attachment %} Yes {% else %} No {% endif %}</li>
+            </ul>
 
-        <div class="view-in-details">
-            <h4>View Report</h4>
+            <div class="view-in-details">
+                <h4>View Report</h4>
+            </div>
         </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}
