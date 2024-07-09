@@ -7,11 +7,10 @@
             </a>
         </div>
 
-        <nav class="nav-links-dark">
+        <nav class="nav-links-dark mark-nav">
             <a href="{{ url_for('core.gspy_landing') }}">Home</a>
             <a href="{{ url_for('core.all_bug_reports') }}">Reports</a>
             <a href="{{ url_for('core.api_docs') }}">API</a>
-            <a href="#">Blog</a>
             <a href="#">About</a>
         </nav>
 
@@ -19,7 +18,7 @@
             {% if current_user.is_authenticated %}
             <a href="{{ url_for('accounts.logout') }}" class="nav-reg-button-dark">Logout</a>
             {% else %}
-            <a href="{{ url_for('accounts.login_page') }}" class="nav-login-link-dark">Sign In</a>
+            <a href="{{ url_for('accounts.login_page') }}" class="nav-login-link-dark mark-login-link">Sign In</a>
             <a href="{{ url_for('accounts.signup_page') }}" class="nav-reg-button-dark">Join Us</a>
             {% endif %}
         </div>

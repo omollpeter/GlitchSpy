@@ -84,6 +84,7 @@ def profile_page():
     if current_user.is_authenticated:
         return "<h1>Profile page</h1>"
     session["next"] = request.url
+    flash("Login to view your profile", "info")
     return redirect(url_for("accounts.login_page"))
 
 @accounts_bp.route("/logout")

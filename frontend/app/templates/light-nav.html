@@ -7,20 +7,20 @@
             </a>
         </div>
 
-        <nav class="nav-links-light">
+        <nav class="nav-links-light mark-nav">
             <a href="{{ url_for('core.gspy_landing') }}">Home</a>
             <a href="{{ url_for('core.all_bug_reports') }}">Reports</a>
             <a href="{{ url_for('core.api_docs') }}">API</a>
-            <a href="#">Blog</a>
             <a href="#">About</a>
         </nav>
 
         <div class="login-register">
             {% if current_user.is_authenticated %}
+            <a href="{{ url_for('core.post_bug') }}" class="nav-reg-button-light">Report Bug</a>
             <a href="{{ url_for('accounts.logout') }}" class="nav-login-link-light">Logout</a>
             {% else %}
-            <a href="{{ url_for('accounts.login_page') }}" class="nav-login-link-light">Sign In</a>
-            <a href="{{ url_for('accounts.signup_page') }}" class="nav-reg-button-light">Join Us</a>
+            <a href="{{ url_for('core.post_bug') }}" class="nav-login-link-light">Report Bug</a>
+            <a href="{{ url_for('accounts.login_page') }}" class="nav-reg-button-light">Sign In</a>
             {% endif %}
         </div>
     </div>

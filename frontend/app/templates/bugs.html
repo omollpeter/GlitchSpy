@@ -64,3 +64,15 @@
     {% endfor %}
 </div>
 {% endblock %}
+
+{% block js %}
+<script>
+    document.querySelectorAll(".bug-card").forEach(bug => {
+    bug.addEventListener("click", event => {
+        const dataId = event.currentTarget.getAttribute("data-id");
+        const url = "/gspy/bugreports/" + dataId;
+        window.location.href = url;
+    })
+})
+</script>
+{% endblock %}

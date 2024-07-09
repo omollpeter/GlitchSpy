@@ -80,7 +80,7 @@ def view_bug(id):
     View function for displaying a specific reported bug
     """
     id = escape(id)
-    return "<h1>Bug report</h1>"
+    return render_template("bug.html", id=id)
 
 @core_bp.route("/postbug", methods=["GET", "POST"])
 def post_bug():

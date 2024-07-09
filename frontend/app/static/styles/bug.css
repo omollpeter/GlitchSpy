@@ -1,12 +1,12 @@
 /* style.css */
-
+/* 
 body {
     font-family: Commissioner, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
     color: #333;
-}
+} */
 
 .container {
     max-width: 800px;
@@ -19,12 +19,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.header {
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #eaeaea;
 }
 
 .header h1 {

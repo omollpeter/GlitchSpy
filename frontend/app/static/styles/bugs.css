@@ -3,7 +3,7 @@
     margin: 20px auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 8px;
 }
 
 .reported-bugs-title {
@@ -30,6 +30,8 @@
     background-color: #fff;
     position: relative;
     color: #1d2139;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .bug-card:hover {
@@ -116,9 +118,9 @@ strong {
     background-color: #0b0d1a;
     color: white;
     align-self: center;
-    max-width: 150px;
+    max-width: 120px;
     margin: 10px auto;
-    padding: 1px;
+    padding: 10px;
     border-radius: 8px;
     cursor: pointer;
 }

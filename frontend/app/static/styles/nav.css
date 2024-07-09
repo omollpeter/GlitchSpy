@@ -92,6 +92,7 @@ header.dark {
 
 .nav-reg-button-light {
     margin-left: 20px;
+    margin-right: 10px;
     background-color: #0b0d1a;
     border: 1px solid #0b0d1a;
     border-radius: 10px;
@@ -103,4 +104,9 @@ header.dark {
 .nav-reg-button-light:hover {
     background-color: #fff;
     color: #0b0d1a;
+}
+
+.mark-nav a.active::after,
+.mark-login-link.active::after {
+    width: 100%;
 }
