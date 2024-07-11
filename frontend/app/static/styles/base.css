@@ -14,19 +14,6 @@ a {
   text-decoration: none;
 }
 
-/* .bugs-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.bug {
-  border: 1px solid navy;
-  border-radius: 5px;
-  padding: 20px;
-  cursor: pointer;
-} */
-
 .flash-messages {
   font-family: Commissioner, sans-serif;
   position: fixed;

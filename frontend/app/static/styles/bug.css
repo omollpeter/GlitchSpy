@@ -1,13 +1,4 @@
 /* style.css */
-/* 
-body {
-    font-family: Commissioner, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-} */
-
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -19,6 +10,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: Commissioner, sans-serif;
+}
+
+.container h1 {
+    text-align: center;
 }
 
 .header h1 {
@@ -27,7 +23,7 @@ body {
     color: #2c3e50;
 }
 
-.main {
+.main-report-content {
     padding: 20px;
 }
 

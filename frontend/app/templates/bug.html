@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block css%}
-<link rel="stylesheet" href="../static/styles/bug.css">
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/bug.css') }}">
 {% endblock %}
 
 {% include 'dark-nav.html' %}
 
 {% block content %}
+<main>
 <div class="container">
     <h1>Bug Report Details</h1>
-    <div class="main">
+    <div class="main-report-content">
         <section class="bug-report">
             <h2 class="bug-report__title">Product Name: </h2> <div class="bug-report__details">
                 <h3 class="bug-report__details__heading">Bug Name:</h3> <p class="bug-report__details__content">Bug name</p>  </div>
@@ -43,5 +44,6 @@
             </section>
     </div>
 </div>
+</main>
 
 {% endblock %}
