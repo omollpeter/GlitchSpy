@@ -10,8 +10,8 @@
     <!-- styles -->
     <!-- CSS only -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/nav.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/nav.css">
 
     <link
       rel="stylesheet"
@@ -36,11 +36,11 @@
         <div class="flash-messages">
             {% for category, message in messages %}
               {% if category == "success" %}
-              <span class="flash-success"><img src="{{ url_for('static', filename='images/check.svg') }}" alt="">{{ message }}</span>
+              <span class="flash-success"><img src="../static/images/check.svg" alt="">{{ message }}</span>
               {% elif category == "danger" %}
-              <span class="flash-danger"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ message }}</span>
+              <span class="flash-danger"><img src="../static/images/close.svg" alt="">{{ message }}</span>
               {% elif category == "info" %}
-              <span class="flash-info"><img src="{{ url_for('static', filename='images/info.svg') }}" alt="">{{ message }}</span>
+              <span class="flash-info"><img src="../static/images/info.svg" alt="">{{ message }}</span>
               {% endif %}
             {% endfor %}
         </div>
