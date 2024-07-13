@@ -1,63 +1,12 @@
 {% extends "base.html" %}
 
 {% block css%}
-<link rel="stylesheet" type="text/css" href="../static/styles/signing.css">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/signing.css') }}">
 {% endblock %}
 
 {% include 'dark-nav.html' %}
 
 {% block content %}
-
-<!-- <div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4">
-    <main class="form-signin w-100 m-auto">
-      <form role="form" method="post" action="">
-        {{ form.csrf_token }}
-        <h1 class="h3 mb-3 fw-normal text-center">Please register</h1>
-
-        <div class="form-floating">
-          {{ form.email(placeholder="email", class="form-control mb-2") }}
-          {{ form.email.label }}
-            {% if form.email.errors %}
-              {% for error in form.email.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
-                </div>
-              {% endfor %}
-            {% endif %}
-        </div>
-        <div class="form-floating">
-          {{ form.password(placeholder="password", class="form-control mb-2") }}
-          {{ form.password.label }}
-            {% if form.password.errors %}
-              {% for error in form.password.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
-                </div>
-              {% endfor %}
-            {% endif %}
-        </div>
-        <div class="form-floating">
-          {{ form.confirm(placeholder="Confirm Password", class="form-control mb-2") }}
-          {{ form.confirm.label }}
-            {% if form.confirm.errors %}
-              {% for error in form.confirm.errors %}
-                <div class="alert alert-danger" role="alert">
-                  {{ error }}
-                </div>
-              {% endfor %}
-            {% endif %}
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-        <p class="text-center mt-3">Already registered? <a href="{{ url_for('accounts.login_page') }}">Login now</a></p>
-      </form>
-    </main>
-  </div>
-  <div class="col-md-4"></div>
-</div> -->
-
-
 <main>
   <div class="login-container signup-container">
     <h2>Join our Community</h2>
@@ -69,14 +18,14 @@
                     <label for="first-name">First name</label>
                     {{ form.first_name(placeholder="e.g. John") }}
                     {% for error in form.first_name.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
                 <div class="form-group">
                     <label for="last-name">Last name</label>
                     {{ form.last_name(placeholder="e.g. Doe") }}
                     {% for error in form.last_name.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -84,7 +33,7 @@
                 <label for="email">Email Address</label>
                 {{ form.email(placeholder="e.g. johndoe@email.com") }}
                 {% for error in form.email.errors %}
-                <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                 {% endfor %}
             </div>
 
@@ -92,21 +41,21 @@
                 <label for="contact">Contact</label>
                 {{ form.contact(placeholder="e.g. +25470000000") }}
                 {% for error in form.contact.errors %}
-                <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                 {% endfor %}
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 {{ form.password() }}
                 {% for error in form.password.errors %}
-                <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                 {% endfor %}
             </div>
             <div class="form-group">
                 <label for="confirm-password">Confirm password</label>
                 {{ form.confirm() }}
                 {% for error in form.confirm.errors %}
-                <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                 {% endfor %}
             </div>
 

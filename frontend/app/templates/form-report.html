@@ -60,7 +60,7 @@
                     <label for="bug-name">Bug name</label>
                     {{ form.name(class="bug-name") }}
                     {% for error in form.name.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{url_for('static', filename='images/close.svg')}}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
 
@@ -68,7 +68,7 @@
                     <label for="description">Description</label>
                     {{ form.description() }}
                     {% for error in form.description.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{url_for('static', filename='images/close.svg')}}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
 
@@ -76,7 +76,7 @@
                     <label for="product-name">Product name</label>
                     {{ form.product(class="product-name") }}
                     {% for error in form.product.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
 
@@ -84,7 +84,7 @@
                     <label for="category">Category</label>
                     {{ form.category() }}
                     {% for error in form.category.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
 
@@ -92,7 +92,7 @@
                     <label for="severity">Severity</label>
                     {{ form.severity() }}
                     {% for error in form.severity.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                 </div>
 
@@ -100,7 +100,7 @@
                     <label for="attachment">Attachment</label>
                     {{ form.attachment() }}
                     {% for error in form.attachment.errors %}
-                    <span style="color: red;"><img src="../static/images/close.svg" alt="">{{ error }}</span>
+                    <span style="color: red;"><img src="{{ url_for('static', filename='images/close.svg') }}" alt="">{{ error }}</span>
                     {% endfor %}
                     <span>Supported formats: png, jpg, jpeg, gif, webp, webm, mp4, avi, mkv, ogg (Max 2MB)</span>
                 </div>
