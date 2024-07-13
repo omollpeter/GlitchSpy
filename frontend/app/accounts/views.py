@@ -55,7 +55,7 @@ def login_page():
         else:
             flash("Invalid email and/or password.", "danger")
             return render_template("login.html", form=form)
-    return render_template("login.html", form=form)
+    return render_template("login.html", title="Sign In - GlitchSpy", form=form)
 
 @accounts_bp.route("/register", methods=["GET", "POST"])
 def signup_page():
@@ -77,7 +77,7 @@ def signup_page():
 
             return redirect(url_for("core.gspy_landing"))
 
-    return render_template("signup.html", form=form)
+    return render_template("signup.html", title="Join Our Community", form=form)
 
 @accounts_bp.route("/profile")
 def profile_page():

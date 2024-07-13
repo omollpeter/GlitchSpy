@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="../static/styles/home.css">
+{% endblock %}
+
+{% include 'error-nav.html' %}
+
+{% block content %}
+<section class="hero-section" id="hero">
+    <div class="hero-content">
+      <h1 id="headline1"></h1>
+      <div class="home-button">
+        <a href="#" class="report-bug-button">Click to report</a>
+      </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="../static/scripts/error-500.js" defer></script>
+{% endblock %}

@@ -11,4 +11,4 @@ function typeWriter(text, elementId, speed) {
 }
 
 // Call the typeWriter function for each headline
-typeWriter("All in one bugs and defects reporting tool", "headline1", 100);
+typeWriter("Oops! Looks like you are lost", "headline1", 100);

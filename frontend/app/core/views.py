@@ -45,7 +45,7 @@ def gspy_landing():
     """
     View function for the GlitchSpy landing page
     """
-    return render_template("home.html")
+    return render_template("home.html", title="GlitchSpy")
 
 
 @core_bp.route("/api", methods=["GET"])
@@ -53,7 +53,7 @@ def api_docs():
     """
     View function for the API documentation page
     """
-    return render_template("api.html")
+    return render_template("api.html", title="GlitchSpy API")
 
 
 @core_bp.route("/blog", methods=["GET"])
@@ -72,7 +72,7 @@ def all_bug_reports():
     video_ext = ("webm", "mp4", "avi", "mkv")
     image_ext = ("png", "jpg", "jpeg", "gif", "webp")
     bugs = db.session.query(Bug).all()
-    return render_template("bugs.html", bugs=bugs, video_ext=video_ext, image_ext=image_ext)
+    return render_template("bugs.html", title="Bug Reports", bugs=bugs, video_ext=video_ext, image_ext=image_ext)
 
 @core_bp.route("/bugreports/<id>", methods=["GET"])
 def view_bug(id):
@@ -80,7 +80,7 @@ def view_bug(id):
     View function for displaying a specific reported bug
     """
     id = escape(id)
-    return render_template("bug.html", id=id)
+    return render_template("bug.html", title="GlitchSpy - View Bug", id=id)
 
 @core_bp.route("/postbug", methods=["GET", "POST"])
 def post_bug():
@@ -118,4 +118,4 @@ def post_bug():
         db.session.commit()
         flash("Bug reported successfully", "success")
         return redirect(url_for("core.view_bug", id=bug.id))
-    return render_template("form-report.html", form=form)
+    return render_template("form-report.html", title="Report Bug", form=form)

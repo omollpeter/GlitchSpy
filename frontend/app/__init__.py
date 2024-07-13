@@ -7,7 +7,7 @@ This init file defines the application instance
 import os
 from models import storage
 from models.user import User
-from flask import Flask, flash, request, redirect, url_for
+from flask import Flask, flash, request, redirect, url_for, render_template
 from frontend.config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -56,6 +56,20 @@ def file_too_big(error):
     """
     flash("Uploaded file is too big (Should be 2MB max)", "danger")
     return redirect(request.referrer)
+
+@app.errorhandler(404)
+def error_404(error):
+    """
+    Handles 404 Not Found error
+    """
+    return render_template("error-404.html", title="GlitchSpy - Not Found")
+
+@app.errorhandler(500)
+def error_500(error):
+    """
+    Handles server errors
+    """
+    return render_template("error-500.html", title="Server Error")
 
 with app.app_context():
     db.create_all()

@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign In - GlitchSpy</title>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>GlitchSpy</title>
+    {% endif %}
     <!-- meta -->
     <meta name="description" content="">
     <meta name="author" content="">

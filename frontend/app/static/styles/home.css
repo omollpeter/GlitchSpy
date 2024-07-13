@@ -45,7 +45,8 @@
 .report-bug-button {
     width: 150px;
     height: 45px;
-    font-family: Commissioner;
+    position: relative;
+    font-family: Commissioner, sans-serif;
     font-size: 15px;
     font-weight: bold;
     background-color: #0b0d1a;
@@ -56,6 +57,13 @@
     color: #fff;
 }
 
+.home-button {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+}
+
 .report-bug-button:hover {
     background-color: #fff;
     color: #0b0d1a;
@@ -64,7 +72,7 @@
 .view-reports-button {
     width: 150px;
     height: 45px;
-    font-family: Commissioner;
+    font-family: Commissioner, sans-serif;
     font-size: 15px;
     font-weight: bold;
     background-color: #fff;
