@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/bug.css') }}">
+<link rel="stylesheet" type="text/css" href="../static/styles/bug.css">
 {% endblock %}
 
 {% include 'dark-nav.html' %}
@@ -35,7 +35,7 @@
             </div>
         </section>
         <div class="button-container">
-            <a href="{{ url_for('core.all_bug_reports')}}" class="button">Back to All Bug Reports</a>
+            <a href="{{ url_for('core.all_bug_reports') }}" class="button">Back to All Bug Reports</a>
         </div>
         <section class="comments">
             <h2>Comments</h2>
