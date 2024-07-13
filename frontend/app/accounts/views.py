@@ -68,7 +68,7 @@ def signup_page():
             flash("User is registered already", "danger")
 
         else:
-            user = User(email=form.email.data, password=form.password.data)
+            user = User(first_name=form.first_name.data, last_name=form.last_name.data, contact=form.contact.data, email=form.email.data, password=form.password.data)
             db.session.add(user)
             db.session.commit()
 
