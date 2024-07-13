@@ -113,3 +113,10 @@ Visit [website](https://www.omollpeter.tech)
 
 3. **Add comments to discuss the bug or provide additional information.**
    - Use the comment section to add your thoughts or additional details about the bug.
+
+### GlitchSpy API
+See documentation at [api](https://www.omollpeter.tech/gspy/api)
+
+
+## License
+This project is licensed under the Apache License 2.0. See the LICENSE file for more details.
