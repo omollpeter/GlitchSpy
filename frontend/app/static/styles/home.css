@@ -98,3 +98,17 @@
     color: #fff;
     font-family: Lexend, sans-serif;
 }
+
+.footer {
+    position: fixed;
+    bottom: 1%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+}
+
+.footer p {
+    font-family: Commissioner, sans-serif;
+    font-weight: 300;
+    color: #fff;
+}

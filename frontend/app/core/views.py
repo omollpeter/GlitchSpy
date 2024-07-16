@@ -20,8 +20,8 @@ from flask import render_template, flash, redirect, url_for, request, session
 from markupsafe import escape
 from frontend.app import db
 from frontend.config import Config
-from frontend.app.core.forms import BugForm
-from frontend.app.core.models import Bug
+from frontend.app.core.forms import BugForm, UpvoteForm
+from frontend.app.core.models import Bug, Upvote
 from flask_login import current_user
 
 
@@ -69,10 +69,9 @@ def all_bug_reports():
     """
     View function for displaying all reported bugs
     """
-    video_ext = ("webm", "mp4", "avi", "mkv")
-    image_ext = ("png", "jpg", "jpeg", "gif", "webp")
+    
     bugs = db.session.query(Bug).all()
-    return render_template("bugs.html", title="Bug Reports", bugs=bugs, video_ext=video_ext, image_ext=image_ext)
+    return render_template("bugs.html", title="Bug Reports", bugs=bugs)
 
 @core_bp.route("/bugreports/<id>", methods=["GET"])
 def view_bug(id):
@@ -80,7 +79,10 @@ def view_bug(id):
     View function for displaying a specific reported bug
     """
     id = escape(id)
-    return render_template("bug.html", title="GlitchSpy - View Bug", id=id)
+    video_ext = ("webm", "mp4", "avi", "mkv")
+    image_ext = ("png", "jpg", "jpeg", "gif", "webp")
+    bug = db.session.query(Bug).filter_by(id=id).first()
+    return render_template("bug.html", title="GlitchSpy - View Bug", bug=bug, id=id, form=UpvoteForm(), image=image_ext, video=video_ext)
 
 @core_bp.route("/postbug", methods=["GET", "POST"])
 def post_bug():
@@ -119,3 +121,28 @@ def post_bug():
         flash("Bug reported successfully", "success")
         return redirect(url_for("core.view_bug", id=bug.id))
     return render_template("form-report.html", title="Report Bug", form=form)
+
+
+@core_bp.route("/bugreports/<id>/upvote", methods=["POST"], strict_slashes=False)
+def upvote(id):
+    """Upvotes a bug"""
+    form = UpvoteForm()
+    id = escape(id)
+    bug = db.session.query(Bug).filter_by(id=id).first()
+
+    user = current_user.first_name + " " + current_user.last_name
+
+    upvoted = db.session.query(Upvote).filter_by(bug_id=id, upvoted_by=user).first()
+    if upvoted:
+        bug.upvotes -= 1
+        db.session.delete(upvoted)
+        db.session.commit()
+        class_name = "not-upvoted"
+    else:
+        bug.upvotes += 1
+        new_upvote = Upvote(bug_id=id, upvoted_by=user)
+        db.session.add(new_upvote)
+        db.session.commit()
+        class_name = "upvoted"
+
+    return redirect(url_for("core.view_bug", id=bug.id, class_name=class_name))

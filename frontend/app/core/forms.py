@@ -55,3 +55,7 @@ class BugForm(FlaskForm):
     )
 
     submit = SubmitField("Report")
+
+
+class UpvoteForm(FlaskForm):
+    submit = SubmitField("Upvote")

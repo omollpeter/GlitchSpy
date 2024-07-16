@@ -28,11 +28,11 @@
             {% if bug.severity == 'Critical' %}
             <span class="critical">&#9888; {{ bug.severity }} &#9888;</span>
             {% elif bug.severity == 'High' %}
-            <span class="high">{{ bug.severity }}</span>
+            <span class="high">&#9760; {{ bug.severity }} &#9760;</span>
             {% elif bug.severity == 'Medium' %}
-            <span class="medium">{{ bug.severity }}</span>
+            <span class="medium">&#128227; {{ bug.severity }} &#128227;</span>
             {% else %}
-            <span class="low">{{ bug.severity }}</span>
+            <span class="low"> &#9432; {{ bug.severity }}  &#9432;</span>
             {% endif %}
             </p>
             <p><strong>Upvotes:</strong> <span class="upvotes">{{ bug.upvotes }}</span></p>

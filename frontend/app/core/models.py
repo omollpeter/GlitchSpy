@@ -75,3 +75,15 @@ class Comment(db.Model):
         self.created_at = datetime.now(timezone.utc)
         self.updated_at = self.created_at
         self.comment_string = comment_string
+
+
+class Upvote(db.Model):
+    """
+    Stores users who have upvoted a specific bug
+    """
+    __table_name__ = "upvotes"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    bug_id = db.Column(db.String(60), nullable=False)
+    upvoted_by = db.Column(db.String(60), nullable=False)
+
