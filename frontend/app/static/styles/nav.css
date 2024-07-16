@@ -21,6 +21,21 @@ header.dark {
     background: transparent;
 }
 
+header.light {
+    background: #f4f4f9;
+}
+
+.logo a {
+    font-family: Lexend Deca, sans-serif;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0b0d1a;
+}
+
+.logo a span {
+    font-weight: 200;
+}
+
 .logo img {
     height: 35px;
     width: 140px;
@@ -108,21 +123,4 @@ header.dark {
 .nav-reg-button-light:hover {
     background-color: #fff;
     color: #0b0d1a;
-}
-
-.mark-nav a::after,
-.mark-login-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: currentColor;
-    transition: width .3s;
-}
-
-.mark-nav a.active::after,
-.mark-login-link.active::after {
-    width: 100%;
 }

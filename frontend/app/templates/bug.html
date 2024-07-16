@@ -1,14 +1,288 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block css %}
+<style>
+/* style.css */
+
+main {
+  height: 100vh;
+  background-image: url("../images/back-image.png");
+  background-position: center;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  text-align: center;
+}
+  
+a {
+  text-decoration: none;
+}
+
+.flash-messages {
+  font-family: Commissioner, sans-serif;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  list-style: none;
+  background: transparent;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  z-index: 200;
+}
+
+.flash-success {
+  color: green;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-danger {
+  color: red;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-info {
+  color: #F19E39;
+  height: 17px;
+  width: 17px;
+  margin-right: 3px;
+}
+
+.flash-danger img,
+.flash-success img,
+.flash-info img {
+  vertical-align: middle;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 5px;
+    z-index: 100;
+}
+
+
+header.dark {
+    background: transparent;
+}
+
+header.light {
+    background: #f4f4f9;
+}
+
+.logo a {
+    font-family: Lexend Deca, sans-serif;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0b0d1a;
+}
+
+.logo a span {
+    font-weight: 200;
+}
+
+
+.logo img {
+    height: 35px;
+    width: 140px;
+}
+
+.navigation-bar-light,
+.navigation-bar-dark {
+    margin: 10px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Commissioner", sans-serif;
+    font-weight: 600;
+}
+
+.navigation-bar-light .nav-links-light a {
+    margin-right: 20px;
+    font-size: 17px;
+    color: #0b0d1a;
+    position: relative;
+    
+}
+
+.navigation-bar-light .nav-links-light a:hover,
+.nav-login-link-light:hover {
+    text-decoration: underline;
+}
+
+.nav-login-link-light {
+    color: #0b0d1a;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+}
+
+.nav-reg-button-light {
+    margin-left: 20px;
+    margin-right: 10px;
+    background-color: #0b0d1a;
+    border: 1px solid #0b0d1a;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.nav-reg-button-light:hover {
+    background-color: #fff;
+    color: #0b0d1a;
+}
+
+.bug-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Commissioner, sans-serif;
+}
+
+.bug-container h1 {
+    text-align: center;
+}
+
+.header h1 {
+    font-family: Lexend Deca, sans-serif;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.main-report-content {
+    padding: 20px;
+}
+
+.bug-report h2,
+.bug-report h3 {
+    font-family: Lexend, sans-serif;
+    color: #2c3e50;
+}
+
+.bug-report__title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.bug-report__details,
+.bug-report__description,
+.bug-report__additional-details,
+.bug-report__attachments {
+    margin-bottom: 20px;
+}
+
+.bug-report__details__heading,
+.bug-report__description__heading,
+.bug-report__additional-details__heading {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.bug-report__details__content,
+.bug-report__description__content,
+.bug-report__additional-details__content p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.bug-report__attachments__list {
+    list-style: none;
+    padding: 0;
+}
+
+.bug-report__attachments__list li {
+    margin-bottom: 5px;
+}
+
+.bug-report__attachments__list a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.bug-report__attachments__list a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.comments {
+    margin-top: 30px;
+}
+
+.comments__list {
+    list-style: none;
+    padding: 0;
+}
+
+.comments__list li {
+    margin-bottom: 10px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #eaeaea;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+    color: #7f8c8d;
+}
+
+</style>
+
 <link rel="stylesheet" type="text/css" href="../static/styles/bug.css">
+<link rel="stylesheet" type="text/css" href="../static/styles/base.css">
+<link rel="stylesheet" type="text/css" href="../static/styles/nav.css">
+
 {% endblock %}
 
-{% include 'dark-nav.html' %}
+{% include 'light-nav.html' %}
 
 {% block content %}
 <main>
-<div class="container">
+<div class="bug-container">
     <h1>Bug Report Details</h1>
     <div class="main-report-content">
         <section class="bug-report">

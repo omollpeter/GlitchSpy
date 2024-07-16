@@ -1,58 +1,45 @@
 {% extends 'base.html' %}
 
 {% block css %}
+<!-- <link rel="stylesheet" type="text/css" href="../static/styles/bug.css"> -->
 <link rel="stylesheet" type="text/css" href="../static/styles/bugs.css">
 {% endblock %}
 
 {% include 'light-nav.html' %}
 
 {% block content %}
-<h1 class="reported-bugs-title">Reported Bugs</h1>
-<div class="bugs-container">
-    {% for bug in bugs%}
-    <div class="bug-card" data-name="{{ bug.name }}" data-id="{{ bug.id }}">
-        <div class="product-name">
-            <h1>{{ bug.product }}</h1>
-        </div>
 
-        <div class="bug-name">
-            <h2 class="bug-title">Bug Name: {{ bug.name }}</h2>
-        </div>
+<div class="container">
+    <h1>Bug Reports</h1>
+    <div class="bug-list">
+        {% for bug in bugs%}
+        <div class="bug-card" data-name="{{ bug.name }}" data-id="{{ bug.id }}">
+            <h2>{{ bug.product }}</h2>
+            <p><strong>Bug:</strong> {{ bug.name }}</p>
 
-        <div class="bug-header">
-            <h2 class="bug-title">Severity: <span class="severity high">{{ bug.severity }}</span></h2>
-        </div>
-        <div class="bug-body">
-            <h2>Bug Description</h2>
             {% if bug.description %}
-            <p>{{ bug.description }}</p>
+            <p><strong>Description:</strong> {{ bug.description }}</p>
             {% else %}
-            <p>N/A</p>
+            <p><strong>Description:</strong> N/A</p>
             {% endif %}
-            <h2>Additional Details</h2>
-            <ul>
-                <li><strong>Category:</strong> {{ bug.category }}</li>
-                <li><strong>Upvotes:</strong> {{ bug.upvotes }}</li>
-                <li><strong>Attachment:</strong> {% if bug.attachment %} Yes {% else %} No {% endif %}</li>
-            </ul>
 
-            <div class="view-in-details">
-                <h4>View Report</h4>
-            </div>
+            <p><strong>Category:</strong> {{ bug.category }}</p>
+            <p><strong>Severity:</strong> 
+            {% if bug.severity == 'Critical' %}
+            <span class="critical">&#9888; {{ bug.severity }} &#9888;</span>
+            {% elif bug.severity == 'High' %}
+            <span class="high">{{ bug.severity }}</span>
+            {% elif bug.severity == 'Medium' %}
+            <span class="medium">{{ bug.severity }}</span>
+            {% else %}
+            <span class="low">{{ bug.severity }}</span>
+            {% endif %}
+            </p>
+            <p><strong>Upvotes:</strong> <span class="upvotes">{{ bug.upvotes }}</span></p>
+            <p><strong>Posted At:</strong> {{ bug.created_at }}</p>
+            <a href="{{ url_for('core.view_bug', id=bug.id) }}" class="btn">View Details</a>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
-{% endblock %}
-
-{% block js %}
-<script>
-    document.querySelectorAll(".bug-card").forEach(bug => {
-    bug.addEventListener("click", event => {
-        const dataId = event.currentTarget.getAttribute("data-id");
-        const url = "/gspy/bugreports/" + dataId;
-        window.location.href = url;
-    })
-})
-</script>
 {% endblock %}

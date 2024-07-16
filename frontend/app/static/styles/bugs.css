@@ -1,4 +1,4 @@
-.bugs-container {
+/* .bugs-container {
     width: 80vw;
     margin: 20px auto;
     display: grid;
@@ -133,4 +133,97 @@ strong {
     font-family: Commissioner;
     font-size: 11px;
     text-align: center;
+} */
+
+/* New CSS */
+
+.container {
+    font-family: Commissioner, sans-serif;
+    color: #333;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin: 40px 50px 20px 0;
+    font-family: Lexend, sans-serif;
+}
+
+.bug-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.bug-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: 300px;
+    min-width: 250px;
+    box-sizing: border-box;
+}
+
+.bug-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.bug-card h2 {
+    font-family: Lexend, sans-serif;
+    font-size: 1.5em;
+    margin-top: 0;
+    color: #0b0d1a;
+}
+
+.bug-card p {
+    margin: 10px 0;
+}
+
+.bug-card .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #0b0d1a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.bug-card .btn:hover {
+    background-color: #0056b3;
+}
+
+.critical {
+    color: red;
+}
+
+.high {
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.5);
+}
+
+.medium {
+    color: orange;
+}
+
+.low {
+    color: rgb(43, 174, 130);
+}
+
+.upvotes {
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    background: #0056b3;
+    color: #fff;
 }
