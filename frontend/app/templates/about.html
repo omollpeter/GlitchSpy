@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="../static/styles/about.css">
+{% endblock %}
+
+{% include 'dark-nav.html' %}
+
+{% block content %}
+<div id="about" class="section about-section">
+    <div class="about-section-content">
+        <h2>About</h2>
+        <p>
+            The inspiration for the GlitchSpy project stemmed from a personal frustration with encountering unresolved bugs and defects in software products. As a developer and avid user of various software tools, I noticed that many organizations struggle to keep up with identifying and addressing bugs in a timely manner. This often leads to a poor user experience and can even harm the reputation of otherwise excellent software.
+            <br>
+            <br>
+            By addressing these needs, GlitchSpy aims to create a comprehensive and user-friendly platform that benefits developers, organizations, and end-users alike. The project seeks to improve the overall software ecosystem by fostering a culture of transparency, collaboration, and continuous improvement.
+        </p>
+    </div>
+
+    <div class="meet-the-team">
+        <h4>Meet the Team</h4>
+        <div class="profile">
+            <div class="profile-photo">
+                <img src="../static/images/profile-pic.png" alt="" srcset="">
+            </div>
+            <div class="profile-links">
+                <a href="https://x.com/OchiengOmollo41" target="_blank"><img src="../static/images/twitter.png" class="twitter" alt="" srcset=""></a>
+                <a href="https://www.linkedin.com/in/peteromollo/"><img src="../static/images/linkedin.png" class="linkedin" alt="" srcset=""></a>
+                <a href="https://github.com/omollpeter"><img src="../static/images/github.png" class="github" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <p>© 2024 GlitchSpy</p>
+    </div>
+</div>
+{% endblock %}

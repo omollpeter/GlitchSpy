@@ -63,6 +63,13 @@ def blog_page():
     """
     return "<h1>Blog page</h1"
 
+@core_bp.route("/about", methods=["GET"])
+def about_page():
+    """
+    View function the core_bplications blog page
+    """
+    return render_template("about.html", title="About - GlitchSpy")
+
 
 @core_bp.route("/bugreports", methods=["GET"])
 def all_bug_reports():

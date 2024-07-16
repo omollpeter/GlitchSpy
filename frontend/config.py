@@ -29,7 +29,7 @@ class Config:
     Contains the configuration settings for the application
     """
     SECRET_KEY = os.environ.get("GSPY_SECRET_KEY") or "secret_Key_for_GSpy"
-    CSRF_ENABLED = True
+    CSRF_ENABLED = False
     SQLALCHEMY_DATABASE_URI = DATABASE_URI
     WTF_CSRF_ENABLED = True
     DEBUG = True

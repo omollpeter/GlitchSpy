@@ -1,0 +1,89 @@
+body {
+    background: #0b0d1a;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+    overflow-y: scroll;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.about-section {
+    font-family: Commissioner, sans-serif;
+    color: #fff;
+    flex-direction: column;
+    position: relative;
+}
+
+.about-section-content {
+    max-width: 700px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.about-section-content h2 {
+    text-align: center;
+    font-family: Lexend Deca, sans-serif;
+    font-size: 25px;
+}
+
+.about-section-content p {
+    text-align: center;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.profile .profile-photo img {
+    width: 150px;
+    height: 150px;
+}
+
+.meet-the-team h4 {
+    text-align: center;
+    font-family: Lexend, sans-serif;
+    font-size: 22px;
+}
+
+.profile-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.twitter {
+    opacity: 0.6;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.linkedin {
+    opacity: 0.6;
+    width: 32px;
+    height: 32px;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.github {
+    opacity: 0.6;
+    width: 32px;
+    height: 32px;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+}
+
+.linkedin:hover,
+.twitter:hover,
+.github:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.footer-note {
+    position: absolute;
+    bottom: 2%;
+    opacity: .6;
+}
