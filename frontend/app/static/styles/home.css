@@ -112,3 +112,88 @@
     font-weight: 300;
     color: #fff;
 }
+
+@media screen and (max-width: 800px) { 
+    .hero-content h1 {
+        color: #fff;
+        font-size: 20px;
+        font-family: Lexend Deca, sans-serif;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+        max-width: 700px;
+        margin: 10px auto;
+        opacity: .7;
+    }
+
+    .call-to-action {
+        max-width: 300px;
+        margin: 20px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .report-bug-button {
+        width: 120px;
+        height: 35px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #0b0d1a;
+        border: 1px solid #fff;
+        border-radius: 7px;
+        text-align: center;
+        padding: 10px 20px;
+        color: #fff;
+    }
+
+    .home-button {
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        transform: translate(-50%, -50%);
+    }
+
+    .report-bug-button:hover {
+        background-color: #fff;
+        color: #0b0d1a;
+    }
+
+    .view-reports-button {
+        width: 120px;
+        height: 35px;
+        font-family: Commissioner, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: #fff;
+        color: #0b0d1a;
+        text-align: center;
+        padding: 10px 20px;
+        border: 1px solid #fff;
+        border-radius: 7px;
+    }
+
+    .view-reports-button:hover {
+        background-color: #0b0d1a;
+        color: #fff;
+    }
+
+    .partnerships {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .partnerships h2 {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .call-to-action {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

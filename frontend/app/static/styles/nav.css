@@ -124,3 +124,61 @@ header.light {
     background-color: #fff;
     color: #0b0d1a;
 }
+
+.menu-icon {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .navigation-bar-light,
+    .navigation-bar-dark {
+        margin: 10px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "Commissioner", sans-serif;
+        font-weight: 400;
+    }
+
+    .nav-links-dark,
+    .nav-links-light, 
+    .login-register {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+        z-index: 999;
+        position: absolute;
+        top: 15px;
+        right: 5%;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
+
+    .mobile-nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        padding: 10px;
+    }
+
+    .mobile-nav-links a {
+        padding: 10px;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .mobile-nav-links a:hover {
+        background-color: #575757;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+    .navigation-bar-light,
+    .navigation-bar-dark {
+        margin: 10px 20px;
+    }
+}
