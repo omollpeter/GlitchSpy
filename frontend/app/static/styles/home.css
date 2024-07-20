@@ -115,11 +115,7 @@
 
 @media screen and (max-width: 800px) { 
     .hero-content h1 {
-        color: #fff;
-        font-size: 20px;
-        font-family: Lexend Deca, sans-serif;
-        text-align: center;
-        margin: 0 auto;
+        font-size: 23px;
     }
 
     .hero-content p {
@@ -131,10 +127,6 @@
 
     .call-to-action {
         max-width: 300px;
-        margin: 20px auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     .report-bug-button {

@@ -1,5 +1,65 @@
 <!-- Navigation bar for a page with white background -->
-<img src="../static/images/menu-dark.svg" alt="" class="menu-icon"> 
+<ion-icon name="menu" class="menu-icon action-btn" data-mobile-menu-open-btn></ion-icon>
+<div class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+    <div class="menu-top">
+      <h2 class="menu-title">GlitchSpy</h2>
+
+      <button class="menu-close-btn" data-mobile-menu-close-btn>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="mobile-menu-category-list">
+      <li class="menu-category">
+        <a href="#" class="menu-title">Home</a>
+      </li>
+
+      <li class="menu-category">
+        <a href="#" class="menu-title">Reports</a>
+      </li>
+
+      <li class="menu-category">
+        <a href="#" class="menu-title">API</a>
+      </li>
+
+      <li class="menu-category">
+        <a href="#" class="menu-title">About</a>
+      </li>
+    </ul>
+
+    <div class="menu-bottom">
+      <ul class="menu-category-list">
+        <li class="menu-category">
+          <a href="#" class="menu-title">Sign In</a>
+        </li>
+
+        <li class="menu-category">
+          <a href="#" class="menu-title">Join Us</a>
+        </li>
+      </ul>
+
+      <ul class="menu-social-container">
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-github"></ion-icon>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 <header class="light">
     <div class="navigation-bar-light">
         <div class="logo">
@@ -27,3 +87,31 @@
         </div>
     </div>
 </header>
+
+<script>
+  const mobileMenuOpenBtn = document.querySelectorAll(
+    "[data-mobile-menu-open-btn]"
+  );
+  const mobileMenu = document.querySelectorAll("[data-mobile-menu]");
+  const mobileMenuCloseBtn = document.querySelectorAll(
+    "[data-mobile-menu-close-btn]"
+  );
+  const overlay = document.querySelector("[data-overlay]");
+
+  for (let i = 0; i < mobileMenuOpenBtn.length; i++) {
+    // mobile menu function
+    const mobileMenuCloseFunc = function () {
+      mobileMenu[i].classList.remove("active");
+      // overlay.classList.remove("active");
+    };
+
+    mobileMenuOpenBtn[i].addEventListener("click", function () {
+      mobileMenu[i].classList.add("active");
+      // overlay.classList.add("active");
+    });
+
+    mobileMenuCloseBtn[i].addEventListener("click", mobileMenuCloseFunc);
+    // overlay.addEventListener("click", mobileMenuCloseFunc);
+  }
+
+</script>
