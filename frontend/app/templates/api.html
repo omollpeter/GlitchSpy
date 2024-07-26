@@ -5,6 +5,10 @@
 <div class="api-container">
   <nav class="sidebar">
     <h2>GlitchSpy API</h2>
+
+    <button class="api-nav-close">
+      <ion-icon name="close"></ion-icon>
+    </button>
     <ul>
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#authentication">Authentication</a></li>
@@ -15,6 +19,7 @@
     </ul>
   </nav>
 
+  <ion-icon name="menu" class="menu-icon action-btn api-page-icon" data-mobile-menu-open-btn></ion-icon>
   <div class="content">
     <div class="navigate-home">
       <a href="{{ url_for('core.gspy_landing') }}">Home</a>
@@ -143,19 +148,8 @@
     "created_at": "datetime"
   }
 }</code></pre>
-
-      <!-- <h3>GET /api/bugs</h3>
-<p>Description: Retrieves a list of all reported bugs</p>
-<pre><code id="getBugsCode">curl -X GET https://api.glitchspy.com/api/bugs</code><button onclick="copyCode('getBugsCode')">Copy</button></pre>
-
-<h3>GET /api/bugs/:id</h3>
-<p>Description: Retrieves detailed information about a specific bug report</p>
-<pre><code id="getBugByIdCode">curl -X GET https://api.glitchspy.com/api/bugs/123</code><button onclick="copyCode('getBugByIdCode')">Copy</button></pre>
-
-<h3>POST /api/bugs</h3>
-<p>Description: Creates a new bug report</p>
-<pre><code id="postBugCode">curl -X POST https://api.glitchspy.com/api/bugs -H "Content-Type: application/json" -d '{ "title": "New Bug", "description": "Description", "category": "UI", "severity": "Medium", "product": "GlitchSpy", "version": "1.0" }'</code><button onclick="copyCode('postBugCode')">Copy</button></pre> -->
     </section>
+
     <section id="examples">
       <h2>Examples</h2>
       <p>Some example API calls:</p>
@@ -270,12 +264,34 @@
     alert("Code snippet copied to clipboard!");
   }
 
-  // // Function to toggle sidebar visibility
-  // const toggleSidebar = document.getElementById('toggleSidebar');
-  // const sidebar = document.getElementById('sidebar');
+  const mobileMenuOpenBtn = document.querySelector(
+    ".api-page-icon"
+  );
+  const mobileMenu = document.querySelector(".sidebar");
+  const mobileMenuCloseBtn = document.querySelector(
+    ".api-nav-close"
+  );
 
-  // toggleSidebar.addEventListener('click', () => {
-  //     sidebar.classList.toggle('hidden');
-  // });
+  const mobileMenuCloseFunc = function () {
+    mobileMenu.classList.remove("active");
+    mobileMenu.style.visibility = "hidden";
+  };
+
+  mobileMenuOpenBtn.addEventListener("click", function () {
+    mobileMenu.classList.add("active")
+    mobileMenu.style.visibility = "visible";
+  });
+
+  mobileMenuCloseBtn.addEventListener("click", mobileMenuCloseFunc);
+
+  const apiLinks = document.querySelectorAll("nav ul li a");
+  apiLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.remove("active")
+      }
+    })
+  })
+
 </script>
 {% endblock %}

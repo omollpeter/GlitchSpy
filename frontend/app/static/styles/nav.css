@@ -361,7 +361,7 @@ span {
 }
 
 .action-btn {
-  position: relative;
+  /* position: fixed; */
   font-size: 26px;
   color: var(--eerie-black);
   padding: 10px;
@@ -401,7 +401,7 @@ span {
   .menu-icon {
     display: block;
     z-index: 999;
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 5%;
     height: 30px;

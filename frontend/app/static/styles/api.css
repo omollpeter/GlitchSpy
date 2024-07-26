@@ -70,7 +70,15 @@ body {
     padding: 20px;
     position: fixed;
     height: 100%;
+    left: 0%;
+    visibility: visible;
     overflow-y: auto;
+    z-index: 1000;
+    transition: left ease-in-out .3s;
+}
+
+.sidebar.active {
+    left: 0%;
 }
 
 .sidebar h2 {
@@ -100,9 +108,18 @@ body {
     text-decoration: underline;
 }
 
+.api-nav-close {
+    position: absolute;
+    top: 15px;
+    right: 2%;
+    color: #fff;
+    visibility: hidden;
+    transition: left ease-in-out .2s;
+}
+
 .navigate-home {
     position: fixed;
-    top: 10px;
+    top: 15px;
     right: 30px;
 }
 
@@ -189,4 +206,31 @@ code {
     color: #2c3e50;
     line-height: 1.6;
     margin-left: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .content {
+        margin-left: 20px;
+    }
+
+    .api-page-icon {
+        top: 0;
+        left: 2%;
+    }
+
+    .api-nav-close {
+        width: 40px;
+        height: 40px;
+    }
+
+    .api-nav-close ion-icon {
+        visibility: visible;
+        font-size: 25px;
+    }
+
+    .sidebar {
+        left: -100%;
+    }
+
 }

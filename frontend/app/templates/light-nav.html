@@ -11,31 +11,40 @@
 
     <ul class="mobile-menu-category-list">
       <li class="menu-category">
-        <a href="#" class="menu-title">Home</a>
+        <a href="{{ url_for('core.gspy_landing') }}" class="menu-title">Home</a>
       </li>
 
       <li class="menu-category">
-        <a href="#" class="menu-title">Reports</a>
+        <a href="{{ url_for('core.all_bug_reports') }}" class="menu-title">Reports</a>
       </li>
 
       <li class="menu-category">
-        <a href="#" class="menu-title">API</a>
+        <a href="{{ url_for('core.api_docs') }}" class="menu-title">API</a>
       </li>
 
       <li class="menu-category">
-        <a href="#" class="menu-title">About</a>
+        <a href="{{ url_for('core.about_page') }}" class="menu-title">About</a>
       </li>
     </ul>
 
     <div class="menu-bottom">
       <ul class="menu-category-list">
+        {% if current_user.is_authenticated %}
         <li class="menu-category">
-          <a href="#" class="menu-title">Sign In</a>
+          <a href="{{ url_for('core.post_bug') }}" class="menu-title">Report bug</a>
+        </li>
+        <li class="menu-category">
+          <a href="{{ url_for('accounts.logout') }}" class="menu-title">Logout</a>
+        </li>
+        {% else %}
+        <li class="menu-category">
+          <a href="{{ url_for('accounts.login_page') }}" class="menu-title">Sign In</a>
         </li>
 
         <li class="menu-category">
-          <a href="#" class="menu-title">Join Us</a>
+          <a href="{{ url_for('accounts.signup_page') }}" class="menu-title">Join Us</a>
         </li>
+        {% endif %}
       </ul>
 
       <ul class="menu-social-container">
@@ -102,16 +111,13 @@
     // mobile menu function
     const mobileMenuCloseFunc = function () {
       mobileMenu[i].classList.remove("active");
-      // overlay.classList.remove("active");
     };
 
     mobileMenuOpenBtn[i].addEventListener("click", function () {
       mobileMenu[i].classList.add("active");
-      // overlay.classList.add("active");
     });
 
     mobileMenuCloseBtn[i].addEventListener("click", mobileMenuCloseFunc);
-    // overlay.addEventListener("click", mobileMenuCloseFunc);
   }
 
 </script>
